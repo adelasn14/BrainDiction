@@ -1,3 +1,51 @@
 <resources>
     <string name="app_name">BrainDiction</string>
+
+    // functionality
+    <string name="switch_mode">Dark Mode</string>
+    <string name="camera">Kamera</string>
+    <string name="gallery">Galeri</string>
+    <string name="upload">Unggah</string>
+
+    // ui
+    <string name="noaccount">Don\'t have an account?</string>
+    <string name="message_welcome_page">Predict Cancer with our app BrainDiction!</string>
+    <string name="title_welcome_page">Welcome to BrainDiction!</string>
+    <string name="title_signup_page">Fill in your data here to register</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="name">Name</string>
+    <string name="message_login_page">Fill in your login data here</string>
+    <string name="title_login_page">Ready to connect with other people?</string>
+    <string name="copyright">© 2022 BrainDiction</string>
+    <string name="greetingUser">Welcome aboard %1$s,</string>
+    <string name="greeting">Hi %1$s,</string>
+    <string name="logout">LOGOUT</string>
+    <string name="signup">Sign Up</string>
+
+    // title
+    <string name="title_activity_home">HomeActivity</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_notifications">Notification</string>
+    <string name="title_settings">Settings</string>
+
+    <string name="new_prediction">New Prediction</string>
+    <string name="archive">Archive</string>
+
+    // new patient
+    <string name="data_pasien">Fill in new patient\'s data</string>
+    <string name="rm">No RM</string>
+    <string name="jenis_kelamin">Gender</string>
+    <string name="tgl_lahir">Date of Birth</string>
+    <string name="alamat">Address</string>
+    <string name="patient_name">Patient\'s name</string>
+    <string name="total_predict">Total predict</string>
+
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
