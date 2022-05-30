@@ -14,6 +14,15 @@
         android:theme="@style/Theme.BrainDiction"
         tools:targetApi="31">
         <activity
+            android:name=".DetailPatientActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewPrediction_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.signUp.signUpActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.home.notifications.NotificationsActivity"
             android:exported="false" />
         <activity

@@ -1,12 +1,13 @@
 package com.example.braindiction.ui.login
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.widget.addTextChangedListener
-import com.example.braindiction.R
 import com.example.braindiction.databinding.ActivityLoginBinding
 import com.example.braindiction.ui.home.HomeActivity
+import com.example.braindiction.ui.signUp.signUpActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -43,8 +44,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.signInButton.setOnClickListener {
-//            val toSignUp = Intent(this, Sign::class.java)
-//            startActivity(toSignUp)
+            val toSignUp = Intent(this, signUpActivity::class.java)
+            startActivity(toSignUp)
         }
     }
 }
