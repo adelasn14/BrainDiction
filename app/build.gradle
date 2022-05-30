@@ -33,8 +33,9 @@ android {
     }
     buildFeatures {
         viewBinding true
+        dataBinding true
     }
-    namespace 'com.example.capstone'
+    namespace 'com.example.braindiction'
 
 }
 

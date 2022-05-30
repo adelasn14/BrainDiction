@@ -1,4 +1,4 @@
-package com.example.capstone.api
+package com.example.braindiction.api
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

@@ -1,4 +1,4 @@
-package com.example.capstone.api
+package com.example.braindiction.api
 
 import android.os.Parcelable
 import androidx.room.PrimaryKey

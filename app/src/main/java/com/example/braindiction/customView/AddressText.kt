@@ -1,6 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 
-package com.example.capstone.customView
+package com.example.braindiction.customView
 
 import android.content.Context
 import android.graphics.Canvas

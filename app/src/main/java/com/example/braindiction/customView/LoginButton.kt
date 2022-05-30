@@ -1,4 +1,4 @@
-package com.example.capstone.customView
+package com.example.braindiction.customView
 
 import android.content.Context
 import android.graphics.Canvas
@@ -7,7 +7,7 @@ import android.util.AttributeSet
 import android.view.Gravity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
-import com.example.capstone.R
+import com.example.braindiction.R
 
 class LoginButton : AppCompatButton {
     private lateinit var enabledBackground: Drawable
