@@ -1,4 +1,4 @@
-package com.example.braindiction.ui.home.mainHome.newPatient
+package com.example.braindiction.ui.patient
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
