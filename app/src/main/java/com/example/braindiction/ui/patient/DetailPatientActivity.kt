@@ -150,9 +150,9 @@ class DetailPatientActivity : AppCompatActivity() {
                     fabGallery.show()
                     fabPredict.show()
 
-//                    addScanButton.setHint(View.VISIBLE)
-//                    addImportImage.setHint(View.VISIBLE)
-//                    seePrediction.setHint(View.VISIBLE)
+                    addScanButton.visibility = View.VISIBLE
+                    addImportImage.visibility = View.VISIBLE
+                    seePrediction.visibility = View.VISIBLE
 
                     fabAction.extend()
 
@@ -164,9 +164,9 @@ class DetailPatientActivity : AppCompatActivity() {
                     fabGallery.hide()
                     fabPredict.hide()
 
-//                    addScanButton.setHint(View.GONE)
-//                    addImportImage.setHint(View.GONE)
-//                    seePrediction.setHint(View.GONE)
+                    addScanButton.visibility = View.GONE
+                    addImportImage.visibility = View.GONE
+                    seePrediction.visibility = View.GONE
 
                     fabAction.shrink()
 
