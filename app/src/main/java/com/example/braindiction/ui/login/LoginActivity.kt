@@ -4,9 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.widget.addTextChangedListener
-import com.example.braindiction.R
 import com.example.braindiction.databinding.ActivityLoginBinding
-import com.example.braindiction.ui.home.HomeActivity
+import com.example.braindiction.ui.main.home.HomeActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding

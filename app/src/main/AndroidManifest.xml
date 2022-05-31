@@ -14,10 +14,16 @@
         android:theme="@style/Theme.BrainDiction"
         tools:targetApi="31">
         <activity
-            android:name=".ui.home.notifications.NotificationsActivity"
+            android:name=".ui.main.settings.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.home.HomeActivity"
+            android:name=".ui.main.profile.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.main.notification.NotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.main.home.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".ui.MainActivity"

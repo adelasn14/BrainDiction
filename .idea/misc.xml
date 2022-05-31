@@ -7,7 +7,10 @@
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.10729166666666666" />
+        <entry key="app/src/main/res/layout/activity_notification.xml" value="0.14010416666666667" />
         <entry key="app/src/main/res/layout/activity_notifications.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.12604166666666666" />
+        <entry key="app/src/main/res/layout/activity_settings.xml" value="0.21150054931640622" />
         <entry key="app/src/main/res/layout/switch_theme.xml" value="0.14010416666666667" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.14010416666666667" />
         <entry key="app/src/main/res/menu/option_menu.xml" value="0.14010416666666667" />
