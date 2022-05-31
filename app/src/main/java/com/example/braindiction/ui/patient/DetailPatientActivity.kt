@@ -132,9 +132,15 @@ class DetailPatientActivity : AppCompatActivity() {
 
     private fun fabAddAction(){
         binding.apply {
+            //button
             fabGallery.visibility = View.GONE
             fabScan.visibility = View.GONE
             fabPredict.visibility = View.GONE
+
+            //text
+            addScanButton.visibility = View.GONE
+            addImportImage.visibility = View.GONE
+            seePrediction.visibility = View.GONE
 
             fabAction.shrink()
             fabAction.setOnClickListener {
@@ -143,6 +149,10 @@ class DetailPatientActivity : AppCompatActivity() {
                     fabScan.show()
                     fabGallery.show()
                     fabPredict.show()
+
+//                    addScanButton.setHint(View.VISIBLE)
+//                    addImportImage.setHint(View.VISIBLE)
+//                    seePrediction.setHint(View.VISIBLE)
 
                     fabAction.extend()
 
@@ -153,6 +163,10 @@ class DetailPatientActivity : AppCompatActivity() {
                     fabScan.hide()
                     fabGallery.hide()
                     fabPredict.hide()
+
+//                    addScanButton.setHint(View.GONE)
+//                    addImportImage.setHint(View.GONE)
+//                    seePrediction.setHint(View.GONE)
 
                     fabAction.shrink()
 

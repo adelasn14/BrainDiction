@@ -10,7 +10,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="40dp"
         android:text="@string/hello_blank_fragment"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,12 +33,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="28dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="16dp"
         android:src="@drawable/ic_scanner_24"
         app:fabCustomSize="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/fab_action"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+
+    <!--Action name text for the add scan button-->
+    <TextView
+        android:id="@+id/add_scan_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/altone_regular"
+        android:text="Scan"
+        app:layout_constraintBottom_toBottomOf="@+id/fab_scan"
+        app:layout_constraintEnd_toStartOf="@+id/fab_scan"
+        tools:ignore="MissingConstraints" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_gallery"
@@ -52,6 +65,20 @@
         app:layout_constraintEnd_toStartOf="@+id/fab_predict"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
+    <!--Action name text for the add import photo button-->
+
+    <TextView
+        android:id="@+id/add_import_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/altone_regular"
+        android:text="Import Photo"
+        app:layout_constraintBottom_toBottomOf="@+id/fab_gallery"
+        app:layout_constraintEnd_toStartOf="@+id/fab_gallery"
+        tools:ignore="MissingConstraints" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_predict"
         android:layout_width="wrap_content"
@@ -63,5 +90,19 @@
         app:layout_constraintBottom_toTopOf="@+id/fab_action"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+
+    <!--Action name text for the prediction button-->
+    <TextView
+        android:id="@+id/see_prediction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="28dp"
+        android:fontFamily="@font/altone_regular"
+        android:text="Prediction"
+        app:layout_constraintBottom_toBottomOf="@+id/fab_predict"
+        app:layout_constraintEnd_toStartOf="@+id/fab_predict"
+        tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
