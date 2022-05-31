@@ -54,6 +54,15 @@
             app:layout_constraintTop_toBottomOf="@+id/nameEditTextLayout"
             tools:ignore="SpeakableTextPresentCheck" />
 
+        <RadioGroup
+            android:id="@+id/setGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
+
+        </RadioGroup>
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- name -->
@@ -180,23 +189,74 @@
         app:layout_constraintTop_toBottomOf="@+id/alamatEditTextLayout"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <RadioButton
-        android:id="@+id/radioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:layout_marginStart="32dp"
-        android:text="Man"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/jenisKelaminTextView" />
 
-    <RadioButton
-        android:id="@+id/radioButton2"
-        android:layout_width="103dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="7dp"
-        android:text="Woman"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/radioButton"
-        app:layout_constraintTop_toBottomOf="@+id/jenisKelaminTextView" />
+<!--    button pilih man or woman-->
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="364dp"
+        android:layout_height="41dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/jenisKelaminTextView"
+        tools:layout_editor_absoluteX="4dp"
+        tools:ignore="MissingConstraints">
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:layout_marginStart="28dp"
+            android:checked="true"
+            android:text="Man"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jenisKelaminTextView" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="103dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="7dp"
+            android:checked="true"
+            android:text="Woman"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.023"
+            app:layout_constraintStart_toEndOf="@+id/radioButton"
+            app:layout_constraintTop_toBottomOf="@+id/jenisKelaminTextView" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/PickDate"
+        android:layout_width="71dp"
+        android:layout_height="34dp"
+        android:text="@string/pickDate"
+        android:textSize="10sp"
+        android:fontFamily="@font/altone_regular"
+        app:layout_constraintTop_toBottomOf="@+id/tanggalLahirTextView"
+        tools:layout_editor_absoluteX="32dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textDateSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintTop_toBottomOf="@+id/tanggalLahirTextView"
+        tools:layout_editor_absoluteX="122dp"
+        tools:ignore="MissingConstraints" />
+
+
+    <!--    <DatePicker-->
+<!--        android:id="@+id/birth_date"-->
+<!--        android:layout_width="37dp"-->
+<!--        android:layout_height="28dp"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:fontFamily="@font/altone_regular"-->
+<!--        android:onClick="showDatePickerDialog"-->
+<!--        android:text="date"-->
+<!--        android:textSize="15sp"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tanggalLahirTextView"-->
+<!--        tools:ignore="MissingConstraints"-->
+<!--        tools:layout_editor_absoluteX="32dp" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

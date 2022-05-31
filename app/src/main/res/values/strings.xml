@@ -50,5 +50,6 @@
     <string name="gallery_page">Gallery</string>
     <string name="scan">Scan</string>
     <string name="prediction">Prediction</string>
+    <string name="pickDate">date</string>
 
 </resources>
