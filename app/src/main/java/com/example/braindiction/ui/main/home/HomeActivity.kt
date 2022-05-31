@@ -5,9 +5,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.braindiction.R
 import com.example.braindiction.databinding.ActivityHomeBinding
+import com.example.braindiction.ui.archive.ArchiveActivity
 import com.example.braindiction.ui.main.notification.NotificationActivity
 import com.example.braindiction.ui.main.profile.ProfileActivity
 import com.example.braindiction.ui.main.settings.SettingsActivity
+import com.example.braindiction.ui.patient.NewPredictionActivity
 
 
 class HomeActivity : AppCompatActivity() {
@@ -26,12 +28,12 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setupAction() {
         binding.newPredictionButton.setOnClickListener {
-//            val toRegisterPatient = Intent(this, HomeActivity::class.java)
-//            startActivity(toRegisterPatient)
+            val toRegisterPatient = Intent(this, NewPredictionActivity::class.java)
+            startActivity(toRegisterPatient)
         }
         binding.archiveButton.setOnClickListener {
-//            val toArchive = Intent(this, HomeActivity::class.java)
-//            startActivity(toArchive)
+            val toArchive = Intent(this, ArchiveActivity::class.java)
+            startActivity(toArchive)
         }
     }
 

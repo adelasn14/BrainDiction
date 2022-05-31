@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.widget.addTextChangedListener
 import com.example.braindiction.databinding.ActivityNewPredictionBinding
+import com.example.braindiction.ui.main.home.HomeActivity
 
 class NewPredictionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNewPredictionBinding
@@ -13,6 +14,11 @@ class NewPredictionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityNewPredictionBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        supportActionBar?.title = "New Patient"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        setupAction()
     }
 
     private fun setMyButtonEnable() {
@@ -45,5 +51,12 @@ class NewPredictionActivity : AppCompatActivity() {
             val next = Intent(this, DetailPatientActivity::class.java)
             startActivity(next)
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        val backTo = Intent(this, HomeActivity::class.java)
+        startActivity(backTo)
+        return true
     }
 }

@@ -10,7 +10,7 @@
         android:id="@+id/dataPasienTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/altone_bold"
         android:text="@string/data_pasien"
         android:textColor="@color/palette_black"
@@ -166,15 +166,16 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- button lanjut-->
+
     <com.example.braindiction.customView.ContinueButton
         android:id="@+id/continueButton"
         android:layout_width="380dp"
         android:layout_height="60dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="142dp"
         android:enabled="false"
         android:fontFamily="@font/altone_bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/alamatEditTextLayout"
         tools:ignore="SpeakableTextPresentCheck" />
