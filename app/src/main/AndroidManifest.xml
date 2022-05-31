@@ -17,6 +17,15 @@
             android:name=".ui.main.settings.SettingsActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.patient.NewPredictionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.signUp.signUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.patient.DetailPatientActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.main.profile.ProfileActivity"
             android:exported="false" />
         <activity
