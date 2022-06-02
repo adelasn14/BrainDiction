@@ -4,14 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.signUp.signUpActivity">
+    tools:context=".ui.signUp.SignUpActivity">
+
+    <TextView
+        android:id="@+id/jenisKelaminTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/altone_bold"
+        android:text="@string/jenis_kelamin"
+        android:textColor="@color/palette_black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEditTextLayout" />
 
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="@font/altone_regular"
         android:text="@string/title_signup_page"
@@ -60,16 +74,54 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
+        android:id="@+id/usernameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/altone_regular"
+        android:text="@string/username"
+        android:textColor="@color/palette_black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameEditTextLayout" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/usernameEditTextLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usernameTextView"
+        app:startIconDrawable="@drawable/ic_person">
+
+        <com.example.braindiction.customView.UsernameText
+            android:id="@+id/usernameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:fontFamily="@font/altone_regular"
+            android:inputType="text"
+            android:textColor="@color/palette_black"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
         android:id="@+id/emailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:text="@string/email"
         android:fontFamily="@font/altone_regular"
+        android:text="@string/email"
         android:textColor="@color/palette_black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameEditTextLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/usernameEditTextLayout" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailEditTextLayout"
@@ -83,13 +135,12 @@
         app:layout_constraintTop_toBottomOf="@+id/emailTextView"
         app:startIconDrawable="@drawable/ic_baseline_email_24">
 
-
         <com.example.braindiction.customView.EmailText
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="58dp"
-            android:inputType="textEmailAddress"
             android:fontFamily="@font/altone_regular"
+            android:inputType="textEmailAddress"
             android:textColor="@color/palette_black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout" />
@@ -101,9 +152,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/altone_regular"
         android:text="@string/password"
         android:textColor="@color/palette_black"
-        android:fontFamily="@font/altone_regular"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout" />
 
@@ -124,24 +175,148 @@
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="58dp"
-            android:inputType="textPassword"
             android:fontFamily="@font/altone_regular"
+            android:inputType="textPassword"
             android:textColor="@color/palette_black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="174dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="2dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/passwordEditTextLayout"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/passwordEditTextLayout"
+        app:layout_constraintTop_toBottomOf="@+id/jenisKelaminTextView2">
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:checked="true"
+            android:fontFamily="@font/altone_regular"
+            android:text="@string/man"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:checked="true"
+            android:fontFamily="@font/altone_regular"
+            android:text="@string/woman"
+            app:layout_constraintHorizontal_bias="0.023"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tanggalLahirTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/altone_bold"
+        android:text="@string/tgl_lahir"
+        android:textColor="@color/palette_black"
+        app:layout_constraintEnd_toEndOf="@+id/passwordEditTextLayout"
+        app:layout_constraintHorizontal_bias="0.814"
+        app:layout_constraintStart_toStartOf="@+id/passwordEditTextLayout"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEditTextLayout" />
+
+    <EditText
+        android:id="@+id/textDateBirth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:background="@null"
+        android:fontFamily="@font/altone_regular"
+        android:importantForAutofill="no"
+        android:text="@string/date_birth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tanggalLahirTextView2"
+        app:layout_constraintTop_toBottomOf="@+id/tanggalLahirTextView2"
+        tools:ignore="LabelFor,MissingConstraints,TextFields" />
+
+    <TextView
+        android:id="@+id/alamatTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="292dp"
+        android:fontFamily="@font/altone_bold"
+        android:text="@string/alamat"
+        android:textColor="@color/palette_black"
+        app:layout_constraintEnd_toEndOf="@+id/textDateBirth"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/radioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/alamatEditTextLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/alamatTextView">
+
+        <com.example.braindiction.customView.AddressText
+            android:id="@+id/alamatEditText"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/altone_regular"
+            android:inputType="textLongMessage"
+            android:textColor="@color/palette_black"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/occupation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="292dp"
+        android:fontFamily="@font/altone_bold"
+        android:text="@string/pekerjaan"
+        android:textColor="@color/palette_black"
+        app:layout_constraintEnd_toEndOf="@+id/textDateBirth"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/alamatEditTextLayout"
+        app:layout_constraintTop_toBottomOf="@+id/alamatEditTextLayout" />
+
+    <Spinner
+        android:id="@+id/spinnerOccupation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/occupation"
+        app:layout_constraintTop_toBottomOf="@+id/occupation" />
+
     <com.example.braindiction.customView.SignUpButton
         android:id="@+id/signUpButton"
         android:layout_width="0dp"
         android:layout_height="63dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="252dp"
         android:layout_marginEnd="32dp"
         android:enabled="false"
         android:fontFamily="@font/altone_bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/passwordEditTextLayout"
         app:layout_constraintTop_toBottomOf="@+id/passwordEditTextLayout" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,7 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
 
-class PasswordText : AppCompatEditText {
+class UsernameText : AppCompatEditText {
 
     constructor(context: Context) : super(context) {
         init()
@@ -32,7 +32,7 @@ class PasswordText : AppCompatEditText {
                 // Do nothing.
             }
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if (s.length < 8) error = "Password must be at least 6 character"
+                if (s.length < 6) error = "Username must be at least 6 characters"
             }
             override fun afterTextChanged(s: Editable) {
                 // Do nothing
@@ -42,7 +42,7 @@ class PasswordText : AppCompatEditText {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        hint = "Enter your password"
+        hint = "Enter your username"
         textAlignment = View.TEXT_ALIGNMENT_VIEW_START
     }
 }

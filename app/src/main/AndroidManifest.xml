@@ -33,10 +33,10 @@
             android:name=".ui.scan.ScanActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.patient.NewPredictionActivity"
+            android:name=".ui.patient.NewPatientActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.signUp.signUpActivity"
+            android:name=".ui.signUp.SignUpActivity"
             android:exported="false" />
         <activity
             android:name=".ui.patient.DetailPatientActivity"

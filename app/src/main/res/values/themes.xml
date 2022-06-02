@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.BrainDiction" parent="Theme.MaterialComponents.Light">
         <!-- Primary brand color. -->
@@ -21,12 +21,12 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.Capstone.NoActionBar">
+    <style name="Theme.BrainDiction.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.Capstone.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.BrainDiction.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.Capstone.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.BrainDiction.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

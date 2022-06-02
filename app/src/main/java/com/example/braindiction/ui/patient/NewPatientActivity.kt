@@ -11,18 +11,18 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import com.example.braindiction.R
-import com.example.braindiction.databinding.ActivityNewPredictionBinding
+import com.example.braindiction.databinding.ActivityNewPatientBinding
 import com.example.braindiction.ui.main.home.HomeActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
 @Suppress("NAME_SHADOWING")
-class NewPredictionActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityNewPredictionBinding
+class NewPatientActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityNewPatientBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityNewPredictionBinding.inflate(layoutInflater)
+        binding = ActivityNewPatientBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         supportActionBar?.title = "New Patient"
@@ -32,8 +32,8 @@ class NewPredictionActivity : AppCompatActivity() {
         setChangeGender()
 
         val birthEd = binding.textDateBirth
-        birthEd.transformIntoDatePicker(this, "MM/dd/yyyy")
-        birthEd.transformIntoDatePicker(this, "MM/dd/yyyy", Date())
+        birthEd.transformIntoDatePicker(this, "dd/MM/yyyy")
+        birthEd.transformIntoDatePicker(this, "dd/MM/yyyy", Date())
 
     }
 

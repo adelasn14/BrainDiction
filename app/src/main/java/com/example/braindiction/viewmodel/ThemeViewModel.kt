@@ -1,4 +1,4 @@
-package com.example.braindiction.ui.main.settings
+package com.example.braindiction.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
