@@ -51,5 +51,8 @@
     <string name="scan">Scan</string>
     <string name="prediction">Prediction</string>
     <string name="pickDate">date</string>
+    <string name="date_birth">Enter the date birth</string>
+    <string name="woman">Woman</string>
+    <string name="man">Man</string>
 
 </resources>

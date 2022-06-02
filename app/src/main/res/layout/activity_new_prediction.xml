@@ -113,7 +113,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/altone_bold"
         android:text="@string/jenis_kelamin"
         android:textColor="@color/palette_black"
@@ -122,34 +122,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameEditTextLayout" />
 
+    <!-- alamat -->
+
     <TextView
         android:id="@+id/tanggalLahirTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/altone_bold"
         android:text="@string/tgl_lahir"
         android:textColor="@color/palette_black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/jenisKelaminTextView" />
+        app:layout_constraintEnd_toEndOf="@+id/radioGroup"
+        app:layout_constraintHorizontal_bias="0.197"
+        app:layout_constraintStart_toStartOf="@+id/radioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
-    <!-- alamat -->
     <TextView
         android:id="@+id/alamatTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/altone_bold"
         android:text="@string/alamat"
         android:textColor="@color/palette_black"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textDateBirth"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tanggalLahirTextView" />
+        app:layout_constraintStart_toStartOf="@+id/tanggalLahirTextView"
+        app:layout_constraintTop_toBottomOf="@+id/textDateBirth" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/alamatEditTextLayout"
@@ -176,87 +175,68 @@
 
     <!-- button lanjut-->
 
+
+    <!--    button pilih man or woman-->
+
     <com.example.braindiction.customView.ContinueButton
         android:id="@+id/continueButton"
         android:layout_width="380dp"
         android:layout_height="60dp"
-        android:layout_marginTop="142dp"
+        android:layout_marginTop="244dp"
         android:enabled="false"
         android:fontFamily="@font/altone_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/alamatEditTextLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textDateBirth"
         tools:ignore="SpeakableTextPresentCheck" />
-
-
-<!--    button pilih man or woman-->
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="364dp"
-        android:layout_height="41dp"
+        android:layout_width="240dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/jenisKelaminTextView"
-        tools:layout_editor_absoluteX="4dp"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintEnd_toEndOf="@+id/jenisKelaminTextView"
+        app:layout_constraintHorizontal_bias="0.158"
+        app:layout_constraintStart_toStartOf="@+id/jenisKelaminTextView"
+        app:layout_constraintTop_toBottomOf="@+id/jenisKelaminTextView">
 
         <RadioButton
             android:id="@+id/radioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="34dp"
+            android:layout_width="103dp"
+            android:layout_height="40dp"
             android:layout_marginStart="28dp"
             android:checked="true"
-            android:text="Man"
+            android:text="@string/man"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/jenisKelaminTextView" />
 
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="103dp"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_marginStart="7dp"
             android:checked="true"
-            android:text="Woman"
+            android:text="@string/woman"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.023"
             app:layout_constraintStart_toEndOf="@+id/radioButton"
             app:layout_constraintTop_toBottomOf="@+id/jenisKelaminTextView" />
     </RadioGroup>
 
-    <Button
-        android:id="@+id/PickDate"
-        android:layout_width="71dp"
-        android:layout_height="34dp"
-        android:text="@string/pickDate"
-        android:textSize="10sp"
-        android:fontFamily="@font/altone_regular"
-        app:layout_constraintTop_toBottomOf="@+id/tanggalLahirTextView"
-        tools:layout_editor_absoluteX="32dp"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/textDateSend"
+    <EditText
+        android:id="@+id/textDateBirth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:background="@null"
+        android:importantForAutofill="no"
+        android:text="@string/date_birth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tanggalLahirTextView"
         app:layout_constraintTop_toBottomOf="@+id/tanggalLahirTextView"
-        tools:layout_editor_absoluteX="122dp"
-        tools:ignore="MissingConstraints" />
-
-
-    <!--    <DatePicker-->
-<!--        android:id="@+id/birth_date"-->
-<!--        android:layout_width="37dp"-->
-<!--        android:layout_height="28dp"-->
-<!--        android:layout_marginTop="5dp"-->
-<!--        android:fontFamily="@font/altone_regular"-->
-<!--        android:onClick="showDatePickerDialog"-->
-<!--        android:text="date"-->
-<!--        android:textSize="15sp"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/tanggalLahirTextView"-->
-<!--        tools:ignore="MissingConstraints"-->
-<!--        tools:layout_editor_absoluteX="32dp" />-->
+        tools:ignore="LabelFor,MissingConstraints,TextFields" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

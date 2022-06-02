@@ -173,19 +173,6 @@ class DetailPatientActivity : AppCompatActivity() {
                     isAllFabsVisible = false
                 }
             }
-            fabScan.setOnClickListener {
-                Toast.makeText(
-                    this@DetailPatientActivity, "App is scanning",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-
-            fabGallery.setOnClickListener {
-                Toast.makeText(
-                    this@DetailPatientActivity, "Opening gallery",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
 
             fabPredict.setOnClickListener {
                 Toast.makeText(
