@@ -18,34 +18,51 @@
 
         <TextView
             android:id="@+id/tv_totalPredict"
-            android:layout_width="375dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="2dp"
+            android:layout_marginBottom="4dp"
             android:fontFamily="@font/altone_regular"
             android:paddingHorizontal="5dp"
             android:paddingVertical="5dp"
             android:text="@string/total_predict"
             android:textSize="15sp"
+            card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_patientName" />
 
         <TextView
             android:id="@+id/tv_patientName"
-            android:layout_width="375dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="2dp"
+            android:layout_marginBottom="2dp"
             android:fontFamily="@font/altone_regular"
             android:paddingHorizontal="5dp"
             android:paddingVertical="5dp"
             android:text="@string/patient_name"
             android:textSize="15sp"
+            card_view:layout_constraintBottom_toTopOf="@+id/tv_totalPredict"
             card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintHorizontal_bias="0.0"
             card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_noRM"
+            android:layout_width="125dp"
+            android:layout_height="25dp"
+            android:fontFamily="@font/altone_regular"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="5dp"
+            android:text="@string/rm"
+            android:textSize="12sp"
+            card_view:layout_constraintStart_toEndOf="@+id/tv_patientName"
             card_view:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
