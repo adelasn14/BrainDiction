@@ -19,9 +19,11 @@ import com.example.braindiction.ui.main.home.HomeActivity
 import com.example.braindiction.ui.main.notification.NotificationActivity
 import com.example.braindiction.ui.main.profile.ProfileActivity
 import com.example.braindiction.viewmodel.ThemeViewModel
+import com.example.braindiction.viewmodel.UserViewModel
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 class SettingsActivity : AppCompatActivity() {
+    private lateinit var userViewModel: UserViewModel
     private lateinit var binding: ActivitySettingsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +34,7 @@ class SettingsActivity : AppCompatActivity() {
         supportActionBar?.title = "Settings"
 
         setupNavigation()
+        setupLogoutAction()
         switchTheme()
     }
 
@@ -90,6 +93,12 @@ class SettingsActivity : AppCompatActivity() {
 
         switch.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
             themeViewModel.saveThemeSetting(isChecked)
+        }
+    }
+
+    private fun setupLogoutAction() {
+        binding.logoutButton.setOnClickListener {
+            userViewModel.logout()
         }
     }
 }

@@ -16,4 +16,10 @@ class UserViewModel(private val pref: UserPreference) : ViewModel() {
         }
     }
 
+    fun logout() {
+        viewModelScope.launch {
+            pref.logout()
+        }
+    }
+
 }
