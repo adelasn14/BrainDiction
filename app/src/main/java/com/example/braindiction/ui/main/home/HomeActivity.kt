@@ -13,6 +13,7 @@ import com.example.braindiction.UserViewModelFactory
 import com.example.braindiction.databinding.ActivityHomeBinding
 import com.example.braindiction.UserPreference
 import com.example.braindiction.ui.archive.ArchiveActivity
+import com.example.braindiction.ui.login.LoginActivity
 import com.example.braindiction.ui.main.notification.NotificationActivity
 import com.example.braindiction.ui.main.profile.ProfileActivity
 import com.example.braindiction.ui.main.settings.SettingsActivity

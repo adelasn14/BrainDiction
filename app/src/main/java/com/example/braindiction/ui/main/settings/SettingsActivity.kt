@@ -15,6 +15,7 @@ import com.example.braindiction.R
 import com.example.braindiction.ViewModelFactory
 import com.example.braindiction.databinding.ActivitySettingsBinding
 import com.example.braindiction.preference.SettingPreferences
+import com.example.braindiction.ui.login.LoginActivity
 import com.example.braindiction.ui.main.home.HomeActivity
 import com.example.braindiction.ui.main.notification.NotificationActivity
 import com.example.braindiction.ui.main.profile.ProfileActivity
@@ -99,6 +100,9 @@ class SettingsActivity : AppCompatActivity() {
     private fun setupLogoutAction() {
         binding.logoutButton.setOnClickListener {
             userViewModel.logout()
+            val logout = Intent(this, LoginActivity::class.java)
+            startActivity(logout)
         }
     }
+
 }
