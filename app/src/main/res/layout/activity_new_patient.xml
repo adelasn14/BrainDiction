@@ -48,8 +48,10 @@
             android:id="@+id/rmEditText"
             android:layout_width="match_parent"
             android:layout_height="58dp"
+            android:fontFamily="@font/altone_regular"
             android:inputType="text"
             android:textColor="@color/palette_black"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nameEditTextLayout"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -98,6 +100,7 @@
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:inputType="text"
+            android:fontFamily="@font/altone_regular"
             android:textColor="@color/palette_black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nameEditTextLayout"
@@ -128,14 +131,14 @@
         android:id="@+id/alamatTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/altone_bold"
         android:text="@string/alamat"
         android:textColor="@color/palette_black"
         app:layout_constraintEnd_toEndOf="@+id/textDateBirth"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/nameEditTextLayout"
-        app:layout_constraintTop_toBottomOf="@+id/nameEditTextLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/alamatEditTextLayout"
@@ -155,7 +158,9 @@
             android:layout_height="100dp"
             android:fontFamily="@font/altone_regular"
             android:inputType="textLongMessage"
+            android:maxLines="3"
             android:textColor="@color/palette_black"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/alamatEditTextLayout"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -168,21 +173,21 @@
 
     <com.example.braindiction.customView.ContinueButton
         android:id="@+id/continueButton"
-        android:layout_width="380dp"
+        android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:enabled="false"
         android:fontFamily="@font/altone_bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/alamatEditTextLayout"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="@+id/alamatEditTextLayout"
         app:layout_constraintTop_toBottomOf="@+id/alamatEditTextLayout"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="174dp"
-        android:layout_height="40dp"
+        android:layout_width="156dp"
+        android:layout_height="48dp"
         android:layout_marginTop="2dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="@+id/jenisKelaminTextView"
@@ -192,11 +197,12 @@
 
         <RadioButton
             android:id="@+id/radioButton"
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:checked="true"
             android:fontFamily="@font/altone_regular"
             android:text="@string/man"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/jenisKelaminTextView" />
 
@@ -208,6 +214,7 @@
             android:checked="true"
             android:fontFamily="@font/altone_regular"
             android:text="@string/woman"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.023"
             app:layout_constraintStart_toEndOf="@+id/radioButton"
@@ -222,8 +229,8 @@
         android:fontFamily="@font/altone_bold"
         android:text="@string/tgl_lahir"
         android:textColor="@color/palette_black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.749"
+        app:layout_constraintEnd_toEndOf="@+id/nameEditTextLayout"
+        app:layout_constraintHorizontal_bias="0.718"
         app:layout_constraintStart_toStartOf="@+id/nameEditTextLayout"
         app:layout_constraintTop_toBottomOf="@+id/nameEditTextLayout" />
 
@@ -231,11 +238,13 @@
         android:id="@+id/textDateBirth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="2dp"
         android:background="@null"
         android:fontFamily="@font/altone_regular"
         android:importantForAutofill="no"
+        android:minHeight="48dp"
         android:text="@string/date_birth"
+        android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tanggalLahirTextView"

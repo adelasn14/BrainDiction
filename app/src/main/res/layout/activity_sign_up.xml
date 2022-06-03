@@ -69,6 +69,7 @@
             android:fontFamily="@font/altone_regular"
             android:inputType="text"
             android:textColor="@color/palette_black"
+            android:textSize="14dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nameEditTextLayout" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -107,6 +108,7 @@
             android:fontFamily="@font/altone_regular"
             android:inputType="text"
             android:textColor="@color/palette_black"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -142,6 +144,7 @@
             android:fontFamily="@font/altone_regular"
             android:inputType="textEmailAddress"
             android:textColor="@color/palette_black"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -178,14 +181,15 @@
             android:fontFamily="@font/altone_regular"
             android:inputType="textPassword"
             android:textColor="@color/palette_black"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="174dp"
-        android:layout_height="40dp"
+        android:layout_width="156dp"
+        android:layout_height="48dp"
         android:layout_marginTop="2dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="@+id/passwordEditTextLayout"
@@ -195,7 +199,7 @@
 
         <RadioButton
             android:id="@+id/radioButton"
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:checked="true"
             android:fontFamily="@font/altone_regular"
@@ -225,19 +229,20 @@
         android:text="@string/tgl_lahir"
         android:textColor="@color/palette_black"
         app:layout_constraintEnd_toEndOf="@+id/passwordEditTextLayout"
-        app:layout_constraintHorizontal_bias="0.814"
+        app:layout_constraintHorizontal_bias="0.718"
         app:layout_constraintStart_toStartOf="@+id/passwordEditTextLayout"
         app:layout_constraintTop_toBottomOf="@+id/passwordEditTextLayout" />
 
     <EditText
         android:id="@+id/textDateBirth"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="2dp"
         android:background="@null"
         android:fontFamily="@font/altone_regular"
         android:importantForAutofill="no"
         android:text="@string/date_birth"
+        android:textSize="17dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tanggalLahirTextView2"
@@ -277,6 +282,7 @@
             android:fontFamily="@font/altone_regular"
             android:inputType="textLongMessage"
             android:textColor="@color/palette_black"
+            android:textSize="14sp"
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -297,13 +303,15 @@
     <Spinner
         android:id="@+id/spinnerOccupation"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="2dp"
+        android:minHeight="48dp"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/occupation"
-        app:layout_constraintTop_toBottomOf="@+id/occupation" />
+        app:layout_constraintTop_toBottomOf="@+id/occupation"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <com.example.braindiction.customView.SignUpButton
         android:id="@+id/signUpButton"

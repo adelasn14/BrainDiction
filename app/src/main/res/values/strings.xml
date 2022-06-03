@@ -3,9 +3,8 @@
 
     // functionality
     <string name="switch_mode">Dark Mode</string>
-    <string name="camera">Kamera</string>
-    <string name="gallery">Galeri</string>
-    <string name="upload">Unggah</string>
+    <string name="camera">Camera</string>
+    <string name="upload">Upload</string>
 
     // ui
     <string name="noaccount">Don\'t have an account?</string>
@@ -26,7 +25,6 @@
     <string name="signup">Sign Up</string>
 
     // title
-    <string name="title_activity_home">HomeActivity</string>
 
     <string name="title_home">Home</string>
     <string name="title_profile">Profile</string>
@@ -46,18 +44,17 @@
     <string name="patient_name">Patient\'s name</string>
     <string name="total_predict">Total predict</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     // add prediction
     <string name="gallery_page">Gallery</string>
     <string name="scan">Scan</string>
     <string name="prediction">Prediction</string>
-    <string name="pickDate">date</string>
     <string name="date_birth">Enter date birth</string>
     <string name="woman">Woman</string>
     <string name="man">Man</string>
     <string name="dark_mode_off">Dark Mode OFF</string>
     <string name="dark_mode_on">Dark Mode ON</string>
+    <string name="language">Language</string>
 
     // string array for dropdown list occupations
     <string-array name="occupation">
