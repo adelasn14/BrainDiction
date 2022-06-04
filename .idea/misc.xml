@@ -17,10 +17,10 @@
         <entry key="app/src/main/res/layout/activity_new_prediction.xml" value="0.4836733209850944" />
         <entry key="app/src/main/res/layout/activity_notification.xml" value="0.14010416666666667" />
         <entry key="app/src/main/res/layout/activity_notifications.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.22518432617187506" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_scan.xml" value="0.14010416666666667" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.38649749755859375" />
-        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.5108886718750001" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_sign_up_personal.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/date_picker.xml" value="0.14399261474609376" />
         <entry key="app/src/main/res/layout/list_patient.xml" value="1.0235823197798295" />
