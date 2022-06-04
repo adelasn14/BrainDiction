@@ -20,9 +20,9 @@
         android:id="@+id/toggle_theme_layout"
         android:layout_width="350dp"
         android:layout_height="56dp"
+        android:fontFamily="@font/altone_regular"
         android:textOff="@string/dark_mode_off"
         android:textOn="@string/dark_mode_on"
-        android:fontFamily="@font/altone_regular"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -32,18 +32,15 @@
 
     <Button
         android:id="@+id/logoutButton"
-        android:layout_width="0dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="12dp"
         android:backgroundTint="@color/palette_lighter_gray"
-        android:text="@string/logout"
         android:fontFamily="@font/altone_regular"
+        android:text="@string/logout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toggle_theme_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/language" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
@@ -64,9 +61,12 @@
         android:id="@+id/language"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/palette_lighter_gray"
         android:text="@string/language"
+        android:fontFamily="@font/altone_regular"
         app:layout_constraintEnd_toEndOf="@+id/toggle_theme_layout"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/toggle_theme_layout"
         app:layout_constraintTop_toBottomOf="@+id/toggle_theme_layout" />
 
