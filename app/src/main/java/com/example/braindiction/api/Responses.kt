@@ -34,6 +34,21 @@ data class ArchivePatientResponse(
     val patient: List<PatientData>
 )
 
+data class AddNewPatientResponse(
+    val error: Boolean,
+    val message: String,
+    val patient: List<NewPatientData>
+)
+
+data class NewPatientData(
+    var noRM: String? = null,
+    var name: String? = null,
+    var tglLahir : Date,
+    var jenisKelamin: String? = null,
+    var avaUrl: String? = null,
+    var alamat: String? = null
+)
+
 @Parcelize
 data class PatientData(
     @PrimaryKey

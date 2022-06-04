@@ -1,9 +1,12 @@
 package com.example.braindiction.api
 
+import android.widget.EditText
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 interface ApiService {
     @FormUrlEncoded
@@ -12,7 +15,10 @@ interface ApiService {
         @Field("name") name: String,
         @Field("username") username: String,
         @Field("email") email: String,
-        @Field("password") password: String
+        @Field("password") password: String,
+        @Field("gender") gender: String,
+        @Field("dateofbirth") dob: Date? = null,
+        @Part("address") address: RequestBody
     ): Call<RegisterResponse>
 
     @FormUrlEncoded
@@ -47,7 +53,8 @@ interface ApiService {
         @Header("Authorization") authToken: String,
         @Field("noRm") noRM: String,
         @Field("name") name: String,
-        @Field("jenisKelamin") jenisKelamin: String,
-        @Part("description") description: RequestBody
-    ): Call<UploadResponse>
+        @Field("gender") gender: String,
+        @Field("dateofbirth") dob: Date? = null,
+        @Part("address") address: RequestBody
+    ): Call<AddNewPatientResponse>
 }

@@ -187,7 +187,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/setGender"
         android:layout_width="156dp"
         android:layout_height="48dp"
         android:layout_marginTop="2dp"
@@ -205,7 +205,7 @@
             android:fontFamily="@font/altone_regular"
             android:text="@string/man"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+            app:layout_constraintTop_toBottomOf="@+id/setGender" />
 
         <RadioButton
             android:id="@+id/radioButton2"
@@ -217,7 +217,7 @@
             android:text="@string/woman"
             app:layout_constraintHorizontal_bias="0.023"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+            app:layout_constraintTop_toBottomOf="@+id/setGender" />
     </RadioGroup>
 
     <TextView
@@ -260,8 +260,8 @@
         android:textColor="@color/palette_black"
         app:layout_constraintEnd_toEndOf="@+id/textDateBirth"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/radioGroup"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintStart_toStartOf="@+id/setGender"
+        app:layout_constraintTop_toBottomOf="@+id/setGender" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/alamatEditTextLayout"

@@ -10,7 +10,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class LoginViewModel(private val pref: UserPreference) : ViewModel() {
+class LoginViewModel() : ViewModel() {
     private val _loginUser = MutableLiveData<LoginResponse>()
     val loginUser: LiveData<LoginResponse> = _loginUser
 

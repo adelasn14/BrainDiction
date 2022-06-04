@@ -56,15 +56,6 @@
             app:layout_constraintTop_toBottomOf="@+id/nameEditTextLayout"
             tools:ignore="SpeakableTextPresentCheck" />
 
-        <RadioGroup
-            android:id="@+id/setGender"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:ignore="MissingConstraints">
-
-        </RadioGroup>
-
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- name -->
@@ -138,7 +129,7 @@
         app:layout_constraintEnd_toEndOf="@+id/textDateBirth"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/nameEditTextLayout"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/setGender" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/alamatEditTextLayout"
@@ -185,7 +176,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/setGender"
         android:layout_width="156dp"
         android:layout_height="48dp"
         android:layout_marginTop="2dp"

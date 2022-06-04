@@ -6,6 +6,11 @@ import com.example.braindiction.UserPreference
 import kotlinx.coroutines.launch
 
 class UserViewModel(private val pref: UserPreference) : ViewModel() {
+    fun saveUser(user: IsUserLogin) {
+        viewModelScope.launch {
+            pref.saveUser(user)
+        }
+    }
     fun getUser(): LiveData<IsUserLogin> {
         return pref.getUser().asLiveData()
     }

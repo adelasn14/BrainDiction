@@ -14,7 +14,7 @@ class UserViewModelFactory(private val pref: UserPreference) :
             return UserViewModel(pref) as T
         }
         if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
-            return LoginViewModel(pref) as T
+            return LoginViewModel() as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }

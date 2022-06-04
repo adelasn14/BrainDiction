@@ -1,18 +1,28 @@
 package com.example.braindiction.ui.patient
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
-import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.DatePicker
+import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import com.example.braindiction.R
+import com.example.braindiction.api.AddNewPatientResponse
+import com.example.braindiction.api.ApiConfig
 import com.example.braindiction.databinding.ActivityNewPatientBinding
+import com.example.braindiction.preference.LoginSession
+import com.example.braindiction.ui.login.LoginActivity
 import com.example.braindiction.ui.main.home.HomeActivity
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.RequestBody.Companion.toRequestBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -20,6 +30,7 @@ import java.util.*
 class NewPatientActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNewPatientBinding
 
+    @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNewPatientBinding.inflate(layoutInflater)
@@ -34,7 +45,6 @@ class NewPatientActivity : AppCompatActivity() {
         val birthEd = binding.textDateBirth
         birthEd.transformIntoDatePicker(this, "dd/MM/yyyy")
         birthEd.transformIntoDatePicker(this, "dd/MM/yyyy", Date())
-
     }
 
     private fun setMyButtonEnable() {
@@ -51,6 +61,7 @@ class NewPatientActivity : AppCompatActivity() {
 
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun setupAction() {
         binding.rmEditText.addTextChangedListener {
             setMyButtonEnable()
@@ -65,8 +76,71 @@ class NewPatientActivity : AppCompatActivity() {
         }
 
         binding.continueButton.setOnClickListener {
-            val next = Intent(this, DetailPatientActivity::class.java)
-            startActivity(next)
+//            binding.apply {
+//                val noRM = binding.rmEditText.text.toString()
+//                val name = binding.nameEditText.text.toString()
+//                val gender = setChangeGender().toString()
+//
+//                val df = SimpleDateFormat("dd-MM-yyyy")
+//                val myDate: Date = df.parse(binding.textDateBirth.text.toString()) as Date
+//
+//                val address =
+//                    binding.alamatEditText.text.toString().toRequestBody("text/plain".toMediaType())
+//
+//                val loginSession = LoginSession(this@NewPatientActivity)
+//                val client = ApiConfig().getApiService().patientRegister(
+//                    "Bearer ${loginSession.passToken().toString()}",
+//                    noRM, name, gender, myDate, address
+//                )
+//                client.enqueue(object : Callback<AddNewPatientResponse> {
+//                    override fun onResponse(
+//                        call: Call<AddNewPatientResponse>,
+//                        response: Response<AddNewPatientResponse>
+//                    ) {
+//                        if (response.isSuccessful) {
+//                            val responseBody = response.body()
+//                            if (responseBody != null && !responseBody.error) {
+//                                Toast.makeText(
+//                                    this@NewPatientActivity,
+//                                    responseBody.message,
+//                                    Toast.LENGTH_SHORT
+//                                ).show()
+//                                Log.d("AddStoryActivity", responseBody.toString())
+//                                AlertDialog.Builder(this@NewPatientActivity).apply {
+//                                    setTitle("Yeah!")
+//                                    setMessage("Anda berhasil mengupload story. Sudah tidak sabar untuk belajar ya?")
+//                                    setPositiveButton("Lihat story") { _, _ ->
+//                                        val intent =
+//                                            Intent(context, DetailPatientActivity::class.java)
+//                                        intent.flags =
+//                                            Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+//                                        startActivity(intent)
+//                                        finish()
+//                                    }
+//                                    create()
+//                                    show()
+//                                }
+//                            }
+//                        } else {
+//                            Toast.makeText(
+//                                this@NewPatientActivity,
+//                                response.message(),
+//                                Toast.LENGTH_SHORT
+//                            ).show()
+//                        }
+//                    }
+//
+//                    override fun onFailure(call: Call<AddNewPatientResponse>, t: Throwable) {
+//                        Toast.makeText(
+//                            this@NewPatientActivity,
+//                            "Gagal instance Retrofit",
+//                            Toast.LENGTH_SHORT
+//                        ).show()
+//                    }
+//                })
+//            }
+            val logIn = Intent(this, DetailPatientActivity::class.java)
+            startActivity(logIn)
         }
     }
 
@@ -79,12 +153,12 @@ class NewPatientActivity : AppCompatActivity() {
 
     //button set gender change
     private fun setChangeGender() {
-        binding.radioGroup.setOnCheckedChangeListener { _, checkedId ->
+        binding.setGender.setOnCheckedChangeListener { _, checkedId ->
             val text = "You selected " +
                     if (R.id.radioButton == checkedId)
-                        "male"
+                        "Male"
                     else
-                        "female"
+                        "Female"
             Toast.makeText(applicationContext, text, Toast.LENGTH_SHORT).show()
         }
     }
