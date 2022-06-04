@@ -76,7 +76,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="24dp"
         android:fontFamily="@font/altone_regular"
-        android:text="Import Photo"
+        android:text="@string/upload"
         android:textColor="?android:attr/textColorPrimary"
         app:layout_constraintBottom_toBottomOf="@+id/fab_gallery"
         app:layout_constraintEnd_toStartOf="@+id/fab_gallery"
@@ -89,7 +89,7 @@
         android:layout_marginEnd="28dp"
         android:layout_marginBottom="28dp"
         android:src="@drawable/ic_online_prediction_24"
-        app:fabCustomSize="60dp"d
+        app:fabCustomSize="60dp"
         app:layout_constraintBottom_toTopOf="@+id/fab_action"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
@@ -102,7 +102,7 @@
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="28dp"
         android:fontFamily="@font/altone_regular"
-        android:text="Prediction"
+        android:text="@string/prediction"
         android:textColor="?android:attr/textColorPrimary"
         app:layout_constraintBottom_toBottomOf="@+id/fab_predict"
         app:layout_constraintEnd_toStartOf="@+id/fab_predict"

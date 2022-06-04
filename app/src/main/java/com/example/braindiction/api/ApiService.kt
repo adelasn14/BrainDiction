@@ -49,12 +49,11 @@ interface ApiService {
     ): Call<ArrayList<User>>
 
     @POST("registerpatient")
+    @FormUrlEncoded
     fun patientRegister(
-        @Header("Authorization") authToken: String,
-        @Field("noRm") noRM: String,
         @Field("name") name: String,
-        @Field("gender") gender: String,
-        @Field("dateofbirth") dob: Date? = null,
-        @Part("address") address: RequestBody
+        @Field("sex") gender: String,
+        @Field("dateofbirth") dob: Date,
+        @Field("address") address: String
     ): Call<AddNewPatientResponse>
 }

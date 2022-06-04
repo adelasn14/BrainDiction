@@ -35,17 +35,16 @@ data class ArchivePatientResponse(
 )
 
 data class AddNewPatientResponse(
-    val error: Boolean,
+    var error: Boolean,
     val message: String,
-    val patient: List<NewPatientData>
+    val newPatient: NewPatientData
 )
 
 data class NewPatientData(
-    var noRM: String? = null,
+    var patientid: Int? = null,
     var name: String? = null,
-    var tglLahir : Date,
-    var jenisKelamin: String? = null,
-    var avaUrl: String? = null,
+    var dateofbirth : Date,
+    var sex: Char? = null,
     var alamat: String? = null
 )
 

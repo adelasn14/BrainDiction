@@ -55,7 +55,9 @@
     <string name="dark_mode_off">Dark Mode OFF</string>
     <string name="dark_mode_on">Dark Mode ON</string>
     <string name="language">Language</string>
-    <string name="search_archive">Search Archive</string>
+    <string name="search_archive">Searching archive…</string>
+    <string name="message_new_patient_succeed">Succeed adding new patient. Let\'s predict now!</string>
+    <string name="go_to_detail_patient">To Patient Detail</string>
 
     // string array for dropdown list occupations
     <string-array name="occupation">
