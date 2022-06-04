@@ -23,6 +23,7 @@
         android:layout_marginEnd="28dp"
         android:layout_marginBottom="44dp"
         app:collapsedSize="75dp"
+        app:rippleColor="@color/mouse_hover_effect"
         app:icon="@drawable/ic_add_24"
         app:iconSize="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -89,7 +90,7 @@
         android:layout_marginEnd="28dp"
         android:layout_marginBottom="28dp"
         android:src="@drawable/ic_online_prediction_24"
-        app:fabCustomSize="60dp"d
+        app:fabCustomSize="60dp"
         app:layout_constraintBottom_toTopOf="@+id/fab_action"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />

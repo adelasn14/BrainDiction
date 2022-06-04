@@ -14,6 +14,7 @@
         android:layout_marginTop="28dp"
         android:fontFamily="@font/altone_bold"
         android:text="@string/title_welcome_page"
+        android:textColor="?android:attr/textColorPrimary"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -29,6 +30,7 @@
         android:layout_marginEnd="32dp"
         android:fontFamily="@font/altone_regular"
         android:text="@string/message_welcome_page"
+        android:textColor="?android:attr/textColorPrimary"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -44,7 +46,7 @@
         android:layout_marginEnd="32dp"
         android:fontFamily="@font/altone_regular"
         android:text="@string/message_login_page"
-        android:textColor="@color/palette_black"
+        android:textColor="?android:attr/textColorPrimary"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -59,7 +61,7 @@
         android:layout_marginTop="24dp"
         android:fontFamily="@font/altone_regular"
         android:text="@string/email"
-        android:textColor="@color/palette_black"
+        android:textColor="?android:attr/textColorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/messageTextView" />
 
@@ -81,7 +83,7 @@
             android:layout_height="58dp"
             android:inputType="textEmailAddress"
             android:fontFamily="@font/altone_regular"
-            android:textColor="@color/palette_black"
+            android:textColor="?android:attr/textColorPrimary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -95,7 +97,7 @@
         android:layout_marginTop="24dp"
         android:text="@string/password"
         android:fontFamily="@font/altone_regular"
-        android:textColor="@color/palette_black"
+        android:textColor="?android:attr/textColorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout" />
 
@@ -123,7 +125,8 @@
             android:lines="1"
             android:maxLines="1"
             android:singleLine="true"
-            android:textColor="@color/palette_black" />
+            android:textColor="?android:attr/textColorPrimary"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.example.braindiction.customView.LoginButton
@@ -148,7 +151,7 @@
         android:layout_marginEnd="32dp"
         android:fontFamily="@font/altone_regular"
         android:text="@string/noaccount"
-        android:textColor="@color/palette_black"
+        android:textColor="?android:attr/textColorPrimary"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -174,6 +177,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
         android:text="@string/copyright"
+        android:textColor="?android:attr/textColorPrimary"
         android:fontFamily="@font/altone_regular"
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
