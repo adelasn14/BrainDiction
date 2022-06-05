@@ -13,8 +13,8 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.example.braindiction.R
 import com.example.braindiction.UserPreference
-import com.example.braindiction.UserViewModelFactory
-import com.example.braindiction.ViewModelFactory
+import com.example.braindiction.viewmodel.UserViewModelFactory
+import com.example.braindiction.viewmodel.ViewModelFactory
 import com.example.braindiction.databinding.ActivitySettingsBinding
 import com.example.braindiction.preference.SettingPreferences
 import com.example.braindiction.ui.login.LoginActivity

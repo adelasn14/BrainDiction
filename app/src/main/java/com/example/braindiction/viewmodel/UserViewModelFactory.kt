@@ -1,9 +1,8 @@
-package com.example.braindiction
+package com.example.braindiction.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.braindiction.viewmodel.LoginViewModel
-import com.example.braindiction.viewmodel.UserViewModel
+import com.example.braindiction.UserPreference
 
 class UserViewModelFactory(private val pref: UserPreference) :
     ViewModelProvider.NewInstanceFactory() {
