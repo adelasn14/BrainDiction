@@ -71,6 +71,10 @@ class DetailPatientActivity : AppCompatActivity() {
                 finish()
             }
         }
+        else {
+           val backToDetail = Intent(this, DetailPatientActivity::class.java)
+            startActivity(backToDetail)
+        }
     }
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {

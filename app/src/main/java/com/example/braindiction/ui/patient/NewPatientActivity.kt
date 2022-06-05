@@ -3,12 +3,11 @@ package com.example.braindiction.ui.patient
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.ContentValues.TAG
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.EditText
+import android.widget.DatePicker
 import android.widget.RadioButton
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -49,7 +48,8 @@ class NewPatientActivity : AppCompatActivity() {
         */
         val addressSet = binding.alamatEditText.text
         binding.continueButton.isEnabled =
-            nameSet != null && addressSet != null && nameSet.toString().isNotEmpty() && addressSet.toString()
+            nameSet != null && addressSet != null && nameSet.toString()
+                .isNotEmpty() && addressSet.toString()
                 .isNotEmpty()
 
     }
@@ -64,10 +64,47 @@ class NewPatientActivity : AppCompatActivity() {
             setMyButtonEnable()
         }
 
+//        val birthEd = binding.textDateBirth
+//        val myCalendar = Calendar.getInstance()
+//        val datePickerListener =
+//            DatePickerDialog.OnDateSetListener { _, year, month, day ->
+//            myCalendar.set(Calendar.YEAR, year)
+//            myCalendar.set(Calendar.MONTH, month)
+//            myCalendar.set(Calendar.DAY_OF_MONTH, day)
+//            val sdf = SimpleDateFormat(("dd-MM-yyyy"), Locale.UK)
+//            birthEd.setText(sdf.format(myCalendar.time))
+//        }
+//
+//        birthEd.setOnClickListener {
+//             fun onClick(view: View) {
+//                DatePickerDialog(
+//                    this, datePickerListener, myCalendar
+//                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+//                    myCalendar.get(Calendar.DAY_OF_MONTH)
+//                ).show()
+//             }
+//            onClick(view)
+//        }
+
         val birthEd = binding.textDateBirth
-        birthEd.transformIntoDatePicker(this)
-        birthEd.transformIntoDatePicker(this, Date())
-        Log.d("TAG", "birthEd : $birthEd.toString()")
+        val myCalendar = Calendar.getInstance()
+        val date = DatePickerDialog.OnDateSetListener { _: DatePicker, year: Int, month: Int, day: Int ->
+            myCalendar.set(Calendar.YEAR, year)
+            myCalendar.set(Calendar.MONTH,month)
+            myCalendar.set(Calendar.DAY_OF_MONTH,day)
+
+            val myFormat = "dd-MM-yyyy"
+            val sdf = SimpleDateFormat(myFormat, Locale.US)
+            birthEd.setText(sdf.format(myCalendar.time))
+        }
+
+        birthEd.setOnClickListener {
+            val dobEd = DatePickerDialog(
+                this@NewPatientActivity, date, myCalendar.get(Calendar.YEAR), myCalendar
+                    .get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)
+            ).show().toString()
+            Log.d("TAG", "birthEd : ${dobEd}")
+        }
 
         binding.continueButton.setOnClickListener {
             binding.apply {
@@ -83,6 +120,7 @@ class NewPatientActivity : AppCompatActivity() {
                 val dob: Date = sdf.parse(birthEd.text.toString()) as Date
                 Log.d("TAG", "dob : $dob")
 
+                // address
                 val address =
                     binding.alamatEditText.text.toString()
 
@@ -101,7 +139,7 @@ class NewPatientActivity : AppCompatActivity() {
                             val responseBody = response.body()
                             if (responseBody != null && !responseBody.error) {
                                 _addNewPatient.postValue(response.body())
-                                Log.d(TAG, "response")
+                                Log.d(TAG, "response : $response")
                             }
                         }
                     }
@@ -132,33 +170,5 @@ class NewPatientActivity : AppCompatActivity() {
         val backTo = Intent(this, HomeActivity::class.java)
         startActivity(backTo)
         return true
-    }
-
-    // date Picker
-    private fun EditText.transformIntoDatePicker(context: Context, maxDate: Date? = null) {
-        isFocusableInTouchMode = false
-        isClickable = true
-        isFocusable = false
-
-        val myCalendar = Calendar.getInstance()
-        val datePickerOnDataSetListener =
-            DatePickerDialog.OnDateSetListener { _, year, month, day ->
-                myCalendar.set(Calendar.YEAR, year)
-                myCalendar.set(Calendar.MONTH, month)
-                myCalendar.set(Calendar.DAY_OF_MONTH, day)
-                val sdf = SimpleDateFormat(("dd-MM-yyyy"), Locale.UK)
-                setText(sdf.format(myCalendar.time))
-            }
-
-        setOnClickListener {
-            DatePickerDialog(
-                context, datePickerOnDataSetListener, myCalendar
-                    .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                myCalendar.get(Calendar.DAY_OF_MONTH)
-            ).run {
-                maxDate?.time?.also { datePicker.maxDate = it }
-                show()
-            }
-        }
     }
 }

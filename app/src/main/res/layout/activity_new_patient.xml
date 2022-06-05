@@ -194,6 +194,7 @@
         android:fontFamily="@font/altone_regular"
         android:importantForAutofill="no"
         android:minHeight="48dp"
+        android:focusable="false"
         android:text="@string/date_birth"
         android:textColor="?android:attr/textColorPrimary"
         android:textSize="17sp"

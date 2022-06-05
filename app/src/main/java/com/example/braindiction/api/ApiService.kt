@@ -1,6 +1,5 @@
 package com.example.braindiction.api
 
-import android.widget.EditText
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -53,7 +52,7 @@ interface ApiService {
     fun patientRegister(
         @Field("name") name: String,
         @Field("sex") gender: String,
-        @Field("dateofbirth") dob: Date,
+        @Field("dateofbirth") dob: Date? = null,
         @Field("address") address: String
     ): Call<AddNewPatientResponse>
 }

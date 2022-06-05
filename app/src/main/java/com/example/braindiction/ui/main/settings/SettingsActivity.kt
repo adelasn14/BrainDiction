@@ -12,6 +12,8 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.example.braindiction.R
+import com.example.braindiction.UserPreference
+import com.example.braindiction.UserViewModelFactory
 import com.example.braindiction.ViewModelFactory
 import com.example.braindiction.databinding.ActivitySettingsBinding
 import com.example.braindiction.preference.SettingPreferences
@@ -37,6 +39,7 @@ class SettingsActivity : AppCompatActivity() {
         setupNavigation()
         setupLogoutAction()
         switchTheme()
+        setupViewModel()
     }
 
     private fun setupNavigation() {
@@ -95,6 +98,13 @@ class SettingsActivity : AppCompatActivity() {
         switch.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
             themeViewModel.saveThemeSetting(isChecked)
         }
+    }
+
+    private fun setupViewModel() {
+        userViewModel = ViewModelProvider(
+            this,
+            UserViewModelFactory(UserPreference.getInstance(dataStore))
+        )[UserViewModel::class.java]
     }
 
     private fun setupLogoutAction() {
