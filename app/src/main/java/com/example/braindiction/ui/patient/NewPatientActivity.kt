@@ -139,7 +139,6 @@ class NewPatientActivity : AppCompatActivity() {
                             val responseBody = response.body()
                             if (responseBody != null && !responseBody.error) {
                                 _addNewPatient.postValue(response.body())
-                                Log.d(TAG, "response : $response")
                             }
                         }
                     }

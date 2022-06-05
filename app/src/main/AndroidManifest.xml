@@ -24,7 +24,7 @@
         android:theme="@style/Theme.BrainDiction"
         tools:targetApi="31">
         <activity
-            android:name=".PredictionActivity"
+            android:name=".ui.prediction.PredictionActivity"
             android:exported="false" />
         <activity
             android:name=".ui.archive.ArchiveActivity"

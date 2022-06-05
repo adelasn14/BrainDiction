@@ -16,13 +16,16 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import com.example.braindiction.databinding.ActivityDetailPatientBinding
+import com.example.braindiction.databinding.ActivityPredictionBinding
 import com.example.braindiction.ui.archive.ArchiveActivity
 import com.example.braindiction.ui.createTempFile
+import com.example.braindiction.ui.prediction.PredictionActivity
 import com.example.braindiction.ui.uriToFile
 import java.io.File
 
 class DetailPatientActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailPatientBinding
+    private lateinit var bindingPrediction: ActivityPredictionBinding
     private var isAllFabsVisible: Boolean = false
     private var getFile: File? = null
 
@@ -32,6 +35,8 @@ class DetailPatientActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailPatientBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        bindingPrediction = ActivityPredictionBinding.inflate(layoutInflater)
 
         if (!allPermissionsGranted()) {
             ActivityCompat.requestPermissions(
@@ -115,8 +120,14 @@ class DetailPatientActivity : AppCompatActivity() {
 
             val result = BitmapFactory.decodeFile(getFile?.path)
 
-            // binding.previewImageView.setImageBitmap(result)
+            val toPrediction = Intent(this, PredictionActivity::class.java)
+            startActivity(toPrediction)
+
+            bindingPrediction.previewImageView.setImageBitmap(result)
         }
+
+        val toPrediction = Intent(this, PredictionActivity::class.java)
+        startActivity(toPrediction)
     }
 
 
@@ -130,8 +141,11 @@ class DetailPatientActivity : AppCompatActivity() {
 
             getFile = myFile
 
-            // binding.previewImageView.setImageURI(selectedImg)
+            bindingPrediction.previewImageView.setImageURI(selectedImg)
         }
+
+        val toPrediction = Intent(this, PredictionActivity::class.java)
+        startActivity(toPrediction)
     }
 
     private fun fabAddAction(){

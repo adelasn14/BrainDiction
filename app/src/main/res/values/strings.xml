@@ -58,6 +58,8 @@
     <string name="search_archive">Searching archive…</string>
     <string name="message_new_patient_succeed">Succeed adding new patient. Let\'s predict now!</string>
     <string name="go_to_detail_patient">To Patient Detail</string>
+    <string name="prediction_result">Prediction Result</string>
+    <string name="predict">PREDICT X-RAY</string>
 
     // string array for dropdown list occupations
     <string-array name="occupation">
