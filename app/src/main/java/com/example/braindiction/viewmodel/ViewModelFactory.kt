@@ -1,9 +1,8 @@
-package com.example.braindiction
+package com.example.braindiction.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.braindiction.preference.SettingPreferences
-import com.example.braindiction.viewmodel.ThemeViewModel
 
 class ViewModelFactory(private val pref: SettingPreferences) :
     ViewModelProvider.NewInstanceFactory() {
