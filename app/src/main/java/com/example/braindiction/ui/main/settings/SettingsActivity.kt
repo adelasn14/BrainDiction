@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.braindiction.R
 import com.example.braindiction.UserPreference
 import com.example.braindiction.viewmodel.UserViewModelFactory
-import com.example.braindiction.viewmodel.ViewModelFactory
+import com.example.braindiction.viewmodel.ThemeViewModelFactory
 import com.example.braindiction.databinding.ActivitySettingsBinding
 import com.example.braindiction.preference.SettingPreferences
 import com.example.braindiction.ui.login.LoginActivity
@@ -80,7 +80,7 @@ class SettingsActivity : AppCompatActivity() {
     private fun switchTheme() {
         val pref = SettingPreferences.getInstance(dataStore)
         val themeViewModel =
-            ViewModelProvider(this, ViewModelFactory(pref))[ThemeViewModel::class.java]
+            ViewModelProvider(this, ThemeViewModelFactory(pref))[ThemeViewModel::class.java]
         val switch = binding.toggleThemeLayout
 
         themeViewModel.getThemeSettings().observe(

@@ -59,6 +59,8 @@
     <string name="search_archive">Cari arsip</string>
     <string name="message_new_patient_succeed">Berhasil menambahkan data pasien baru. Ayo mulai prediksi!</string>
     <string name="go_to_detail_patient">Ke detail pasien</string>
+    <string name="prediction_result">Hasil Prediksi</string>
+    <string name="predict">PREDIKSI X-RAY</string>
 
     // string array for dropdown list occupations
     <string-array name="occupation">

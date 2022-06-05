@@ -25,8 +25,10 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="27dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -42,10 +44,13 @@
 
     <TextView
         android:id="@+id/tv_name"
-        android:layout_width="215dp"
+        android:layout_width="0dp"
         android:layout_height="45dp"
+        android:layout_marginTop="8dp"
         android:text="@string/name"
-        tools:layout_editor_absoluteX="166dp"
-        tools:layout_editor_absoluteY="83dp" />
+        app:layout_constraintEnd_toEndOf="@+id/tv_username"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_username"
+        app:layout_constraintTop_toBottomOf="@+id/tv_username" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
