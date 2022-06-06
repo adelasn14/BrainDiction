@@ -12,7 +12,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
-import com.example.braindiction.UserPreference
+import com.example.braindiction.preference.UserPreference
 import com.example.braindiction.viewmodel.UserViewModelFactory
 import com.example.braindiction.api.IsUserLogin
 import com.example.braindiction.databinding.ActivityLoginBinding

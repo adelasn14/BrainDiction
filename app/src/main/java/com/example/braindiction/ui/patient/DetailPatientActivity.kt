@@ -120,10 +120,8 @@ class DetailPatientActivity : AppCompatActivity() {
 
             val result = BitmapFactory.decodeFile(getFile?.path)
 
-            val toPrediction = Intent(this, PredictionActivity::class.java)
-            startActivity(toPrediction)
-
             bindingPrediction.previewImageView.setImageBitmap(result)
+            binding.previewImageView.setImageBitmap(result)
         }
 
         val toPrediction = Intent(this, PredictionActivity::class.java)
@@ -142,6 +140,7 @@ class DetailPatientActivity : AppCompatActivity() {
             getFile = myFile
 
             bindingPrediction.previewImageView.setImageURI(selectedImg)
+            binding.previewImageView.setImageURI(selectedImg)
         }
 
         val toPrediction = Intent(this, PredictionActivity::class.java)

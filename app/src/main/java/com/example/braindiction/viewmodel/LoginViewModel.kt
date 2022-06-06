@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.example.braindiction.api.ApiConfig
 import com.example.braindiction.api.LoginResponse
-import com.example.braindiction.UserPreference
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

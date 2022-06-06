@@ -29,19 +29,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
+    <!--Action name text for the add scan button-->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_scan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="28dp"
         android:src="@drawable/ic_scanner_24"
         app:fabCustomSize="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/fab_action"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
-    <!--Action name text for the add scan button-->
     <TextView
         android:id="@+id/add_scan_button"
         android:layout_width="wrap_content"
@@ -55,19 +55,19 @@
         app:layout_constraintEnd_toStartOf="@+id/fab_scan"
         tools:ignore="MissingConstraints" />
 
+    <!--Action name text for the add import photo button-->
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_gallery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="36dp"
         android:src="@drawable/ic_insert_photo_24"
         app:fabCustomSize="60dp"
         app:layout_constraintBottom_toTopOf="@+id/fab_scan"
         app:layout_constraintEnd_toStartOf="@+id/fab_predict"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
-
-    <!--Action name text for the add import photo button-->
 
     <TextView
         android:id="@+id/add_import_image"
@@ -82,6 +82,8 @@
         app:layout_constraintEnd_toStartOf="@+id/fab_gallery"
         tools:ignore="MissingConstraints" />
 
+    <!--Action name text for the prediction button-->
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_predict"
         android:layout_width="wrap_content"
@@ -94,19 +96,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
-    <!--Action name text for the prediction button-->
     <TextView
         android:id="@+id/see_prediction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/altone_regular"
         android:text="@string/prediction"
         android:textColor="?android:attr/textColorPrimary"
-        app:layout_constraintBottom_toBottomOf="@+id/fab_predict"
-        app:layout_constraintEnd_toStartOf="@+id/fab_predict"
+        app:layout_constraintBottom_toTopOf="@+id/fab_predict"
+        app:layout_constraintEnd_toEndOf="@+id/fab_predict"
         tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/previewImageView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_place_holder"
+        tools:ignore="ContentDescription" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

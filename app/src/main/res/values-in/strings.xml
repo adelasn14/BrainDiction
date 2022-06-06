@@ -51,8 +51,8 @@
     <string name="scan">Pindai</string>
     <string name="prediction">Prediksi</string>
     <string name="date_birth">Masukkan tanggal lahir</string>
-    <string name="woman">Wanita</string>
-    <string name="man">Pria</string>
+    <string name="woman">F</string>
+    <string name="man">M</string>
     <string name="dark_mode_off">Mode Malam OFF</string>
     <string name="dark_mode_on">Mode Malam ON</string>
     <string name="language">Bahasa</string>

@@ -2,6 +2,7 @@ package com.example.braindiction.api
 
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.http.*
 import java.util.*
@@ -47,12 +48,11 @@ interface ApiService {
         @Path("username") username: String,
     ): Call<ArrayList<User>>
 
+    @Headers(
+        "Content-type:application/json; charset=utf-8"
+    )
     @POST("registerpatient")
-    @FormUrlEncoded
     fun patientRegister(
-        @Field("name") name: String,
-        @Field("sex") gender: String,
-        @Field("dateofbirth") dob: Date? = null,
-        @Field("address") address: String
+        @Body user: AddNewPatientResponse
     ): Call<AddNewPatientResponse>
 }

@@ -2,7 +2,7 @@ package com.example.braindiction.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.braindiction.UserPreference
+import com.example.braindiction.preference.UserPreference
 import com.example.braindiction.ui.patient.DetailPatientActivity
 import com.example.braindiction.ui.prediction.PredictionActivity
 

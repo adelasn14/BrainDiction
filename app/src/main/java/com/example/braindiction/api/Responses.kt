@@ -35,17 +35,10 @@ data class ArchivePatientResponse(
 )
 
 data class AddNewPatientResponse(
-    var error: Boolean,
-    val message: String,
-    val newPatient: NewPatientData
-)
-
-data class NewPatientData(
-    var patientid: Int? = null,
     var name: String? = null,
-    var dateofbirth : Date,
-    var sex: Char? = null,
-    var alamat: String? = null
+    var sex: String? = null,
+    var dateofbirth: String,
+    var address: String? = null
 )
 
 @Parcelize

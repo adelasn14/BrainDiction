@@ -1,4 +1,4 @@
-package com.example.braindiction
+package com.example.braindiction.preference
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences

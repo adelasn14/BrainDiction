@@ -2,7 +2,7 @@ package com.example.braindiction.viewmodel
 
 import androidx.lifecycle.*
 import com.example.braindiction.api.IsUserLogin
-import com.example.braindiction.UserPreference
+import com.example.braindiction.preference.UserPreference
 import kotlinx.coroutines.launch
 
 class UserViewModel(private val pref: UserPreference) : ViewModel() {

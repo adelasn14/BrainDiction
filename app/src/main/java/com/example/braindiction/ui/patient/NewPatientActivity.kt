@@ -64,28 +64,6 @@ class NewPatientActivity : AppCompatActivity() {
             setMyButtonEnable()
         }
 
-//        val birthEd = binding.textDateBirth
-//        val myCalendar = Calendar.getInstance()
-//        val datePickerListener =
-//            DatePickerDialog.OnDateSetListener { _, year, month, day ->
-//            myCalendar.set(Calendar.YEAR, year)
-//            myCalendar.set(Calendar.MONTH, month)
-//            myCalendar.set(Calendar.DAY_OF_MONTH, day)
-//            val sdf = SimpleDateFormat(("dd-MM-yyyy"), Locale.UK)
-//            birthEd.setText(sdf.format(myCalendar.time))
-//        }
-//
-//        birthEd.setOnClickListener {
-//             fun onClick(view: View) {
-//                DatePickerDialog(
-//                    this, datePickerListener, myCalendar
-//                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-//                    myCalendar.get(Calendar.DAY_OF_MONTH)
-//                ).show()
-//             }
-//            onClick(view)
-//        }
-
         val birthEd = binding.textDateBirth
         val myCalendar = Calendar.getInstance()
         val date = DatePickerDialog.OnDateSetListener { _: DatePicker, year: Int, month: Int, day: Int ->
@@ -93,42 +71,40 @@ class NewPatientActivity : AppCompatActivity() {
             myCalendar.set(Calendar.MONTH,month)
             myCalendar.set(Calendar.DAY_OF_MONTH,day)
 
-            val myFormat = "dd-MM-yyyy"
-            val sdf = SimpleDateFormat(myFormat, Locale.US)
-            birthEd.setText(sdf.format(myCalendar.time))
+            val sdfView = SimpleDateFormat("dd-MM-yyyy", Locale.US)
+            birthEd.setText(sdfView.format(myCalendar.time))
         }
 
         birthEd.setOnClickListener {
-            val dobEd = DatePickerDialog(
-                this@NewPatientActivity, date, myCalendar.get(Calendar.YEAR), myCalendar
-                    .get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)
-            ).show().toString()
-            Log.d("TAG", "birthEd : ${dobEd}")
+            DatePickerDialog(this, date, myCalendar.get(Calendar.YEAR), myCalendar
+                .get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show()
         }
 
         binding.continueButton.setOnClickListener {
             binding.apply {
-                val name = binding.nameEditText.text.toString()
+                val name = nameEditText.text.toString()
 
                 // set gender
-                val rg = setGender
-                val radiovalue =
-                    (findViewById<View>(rg.checkedRadioButtonId) as RadioButton).text.toString()
+                val setGender =
+                    (findViewById<View>(setGender.checkedRadioButtonId) as RadioButton).text.toString()
 
                 // set date
-                val sdf = SimpleDateFormat("yyyy-MM-dd")
-                val dob: Date = sdf.parse(birthEd.text.toString()) as Date
-                Log.d("TAG", "dob : $dob")
+                val sdfConvert = SimpleDateFormat("yyyy-MM-dd")
+                val dateToConvert = sdfConvert.format(myCalendar.time)
+                val dateValue = sdfConvert.parse(dateToConvert) as Date
+                val dobValue = sdfConvert.format(dateValue)
+                Log.d("NewPatientActivity", "dobValue : $dobValue")
 
                 // address
                 val address =
-                    binding.alamatEditText.text.toString()
+                    alamatEditText.text.toString()
 
                 val _addNewPatient = MutableLiveData<AddNewPatientResponse>()
                 val addNewPatient: LiveData<AddNewPatientResponse> = _addNewPatient
 
                 val client = ApiConfig().getApiService().patientRegister(
-                    name, radiovalue, dob, address
+                    AddNewPatientResponse(name, setGender,
+                        dobValue, address)
                 )
                 client.enqueue(object : Callback<AddNewPatientResponse> {
                     override fun onResponse(
@@ -137,8 +113,9 @@ class NewPatientActivity : AppCompatActivity() {
                     ) {
                         if (response.isSuccessful) {
                             val responseBody = response.body()
-                            if (responseBody != null && !responseBody.error) {
+                            if (responseBody != null) {
                                 _addNewPatient.postValue(response.body())
+                                Log.d("TAG", "response : $response")
                             }
                         }
                     }

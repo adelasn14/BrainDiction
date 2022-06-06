@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.braindiction.R
 import com.example.braindiction.viewmodel.UserViewModelFactory
 import com.example.braindiction.databinding.ActivityHomeBinding
-import com.example.braindiction.UserPreference
+import com.example.braindiction.preference.UserPreference
 import com.example.braindiction.ui.archive.ArchiveActivity
 import com.example.braindiction.ui.main.notification.NotificationActivity
 import com.example.braindiction.ui.main.profile.ProfileActivity
