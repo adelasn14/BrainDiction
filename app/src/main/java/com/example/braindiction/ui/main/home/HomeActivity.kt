@@ -16,7 +16,9 @@ import com.example.braindiction.ui.archive.ArchiveActivity
 import com.example.braindiction.ui.main.notification.NotificationActivity
 import com.example.braindiction.ui.main.profile.ProfileActivity
 import com.example.braindiction.ui.main.settings.SettingsActivity
+import com.example.braindiction.ui.patient.DetailPatientActivity
 import com.example.braindiction.ui.patient.NewPatientActivity
+import com.example.braindiction.ui.prediction.PredictionActivity
 import com.example.braindiction.viewmodel.UserViewModel
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
@@ -59,6 +61,14 @@ class HomeActivity : AppCompatActivity() {
         binding.archiveButton.setOnClickListener {
             val toArchive = Intent(this, ArchiveActivity::class.java)
             startActivity(toArchive)
+        }
+        binding.detailPatientButton.setOnClickListener {
+            val toDetail = Intent(this, DetailPatientActivity::class.java)
+            startActivity(toDetail)
+        }
+        binding.predictionButton.setOnClickListener {
+            val toDetail = Intent(this, PredictionActivity::class.java)
+            startActivity(toDetail)
         }
     }
 

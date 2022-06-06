@@ -4,14 +4,15 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
@@ -21,7 +22,9 @@ import com.example.braindiction.ui.archive.ArchiveActivity
 import com.example.braindiction.ui.createTempFile
 import com.example.braindiction.ui.prediction.PredictionActivity
 import com.example.braindiction.ui.uriToFile
+import java.io.ByteArrayOutputStream
 import java.io.File
+
 
 class DetailPatientActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailPatientBinding
@@ -120,12 +123,14 @@ class DetailPatientActivity : AppCompatActivity() {
 
             val result = BitmapFactory.decodeFile(getFile?.path)
 
-            bindingPrediction.previewImageView.setImageBitmap(result)
-            binding.previewImageView.setImageBitmap(result)
+            val toPrediction = Intent(this, PredictionActivity::class.java)
+            val ba = ByteArrayOutputStream()
+            result.compress(Bitmap.CompressFormat.PNG, 50, ba)
+            toPrediction.putExtra(PredictionActivity.EXTRA_SCAN, ba.toByteArray())
+            startActivity(toPrediction)
+
         }
 
-        val toPrediction = Intent(this, PredictionActivity::class.java)
-        startActivity(toPrediction)
     }
 
 
@@ -139,12 +144,12 @@ class DetailPatientActivity : AppCompatActivity() {
 
             getFile = myFile
 
-            bindingPrediction.previewImageView.setImageURI(selectedImg)
-            binding.previewImageView.setImageURI(selectedImg)
+            val toPrediction = Intent(this, PredictionActivity::class.java)
+            toPrediction.putExtra(PredictionActivity.EXTRA_GALLERY, selectedImg.toString())
+            startActivity(toPrediction)
         }
 
-        val toPrediction = Intent(this, PredictionActivity::class.java)
-        startActivity(toPrediction)
+
     }
 
     private fun fabAddAction(){
