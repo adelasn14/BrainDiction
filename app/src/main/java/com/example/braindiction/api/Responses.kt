@@ -1,10 +1,8 @@
 package com.example.braindiction.api
 
-import android.os.Parcelable
-import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 import java.util.*
+import kotlin.collections.ArrayList
 
 data class UploadResponse(
     val error: Boolean,
@@ -29,8 +27,7 @@ data class LoginResult(
 )
 
 data class ArchivePatientResponse(
-    val error: Boolean,
-    val message: String,
+    @SerializedName("JSON_OBJECT")
     val patient: List<PatientData>
 )
 
@@ -41,16 +38,12 @@ data class AddNewPatientResponse(
     var address: String? = null
 )
 
-@Parcelize
 data class PatientData(
-    @PrimaryKey
+    var patientid : Int,
     var name: String? = null,
-    var tglLahir : Date,
-    var jenisKelamin: String? = null,
-    var avaUrl: String? = null,
-    var alamat: String? = null,
-    var predictImg: String? = null
-) : Parcelable
+    var dateofbirth: String,
+    var sex: Char
+)
 
 data class IsUserLogin(
     val name: String,

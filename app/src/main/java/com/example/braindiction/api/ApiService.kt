@@ -55,4 +55,13 @@ interface ApiService {
     fun patientRegister(
         @Body user: AddNewPatientResponse
     ): Call<AddNewPatientResponse>
+
+    @GET("patientlist")
+    fun searchPatient(
+        @Query("patientid") patientid : String
+    ): Call<ArrayList<PatientData>>
+
+    @GET("patientlist")
+    fun displayAllPatient(
+    ): Call<ArrayList<PatientData>>
 }
