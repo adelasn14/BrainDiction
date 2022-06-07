@@ -68,4 +68,12 @@
         <item>Perawat</item>
         <item>Asisten Dokter</item>
     </string-array>
+
+    //welcome
+    <string name="getquick">Dapatkan Akurasi Prediksi Disini</string>
+    <string name="show_on">Buka</string>
+    <string name="information_text">Informasi tentang aplikasi</string>
+    <string name="or_text">atau</string>
+    <string name="login_text">masuk</string>
+    <string name="information">Cancer is a leading cause of death worldwide, with an early detection cancer patient can live longer than the unpredicted one. We want to make an application to help oncologists in detecting cancer with the help of machine learning. The app flow is around the oncologist uploading patient’s information (X-rays) to the app and the app is giving out percentage rate and the output prediction.</string>
 </resources>
