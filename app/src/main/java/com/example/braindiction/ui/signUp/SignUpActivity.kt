@@ -2,9 +2,12 @@ package com.example.braindiction.ui.signUp
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Toast
@@ -18,18 +21,17 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.braindiction.R
 import com.example.braindiction.preference.UserPreference
 import com.example.braindiction.viewmodel.UserViewModelFactory
-import com.example.braindiction.api.ApiConfig
 import com.example.braindiction.api.IsUserLogin
-import com.example.braindiction.api.RegisterResponse
 import com.example.braindiction.databinding.ActivitySignUpBinding
 import com.example.braindiction.ui.login.LoginActivity
+import com.example.braindiction.ui.main.home.HomeActivity
 import com.example.braindiction.viewmodel.UserViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
-import org.json.JSONObject
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -39,10 +41,14 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
     private lateinit var userViewModel: UserViewModel
 
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        auth = Firebase.auth
 
         setupViewModel()
         setupAction()
@@ -60,7 +66,8 @@ class SignUpActivity : AppCompatActivity() {
         val passwordSet = binding.passwordEditText.text
         binding.signUpButton.isEnabled =
             nameSet != null && usernameSet != null && emailSet != null && passwordSet != null && nameSet.toString()
-                .isNotEmpty() && usernameSet.toString().isNotEmpty() && emailSet.toString().isNotEmpty() && passwordSet.toString()
+                .isNotEmpty() && usernameSet.toString().isNotEmpty() && emailSet.toString()
+                .isNotEmpty() && passwordSet.toString()
                 .isNotEmpty()
 
     }
@@ -101,63 +108,54 @@ class SignUpActivity : AppCompatActivity() {
 
         binding.signUpButton.setOnClickListener {
             binding.apply {
-                val name = nameEditText.text.toString()
-                val username = usernameEditText.text.toString()
+//                val name = nameEditText.text.toString()
+//                val username = usernameEditText.text.toString()
                 val email = emailEditText.text.toString()
                 val password = passwordEditText.text.toString()
-                val gender = setChangeGender().toString()
+//                val gender = setChangeGender().toString()
+//
+//                // birth date
+//                val dob = textDateBirth
+//                val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+////                val myDate: Date? = df.parse(dob.text.toString())
+//
+//                val address =
+//                    binding.alamatEditText.text.toString().toRequestBody("text/plain".toMediaType())
 
-                // birth date
-                val dob = textDateBirth
-                val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-                val myDate: Date? = df.parse(dob.text.toString())
-
-                val address =
-                    binding.alamatEditText.text.toString().toRequestBody("text/plain".toMediaType())
-
-                userViewModel.saveUser(IsUserLogin(name, email, password, false))
-                val client = ApiConfig().getApiService()
-                    .userRegister(name, username, email, password, gender, myDate, address)
-                client.enqueue(object : Callback<RegisterResponse> {
-                    override fun onResponse(
-                        call: Call<RegisterResponse>,
-                        response: Response<RegisterResponse>
-                    ) {
-                        if (response.isSuccessful) {
-                            val responseBody = response.body()
-                            if (responseBody != null && !responseBody.error) {
-                                AlertDialog.Builder(this@SignUpActivity).apply {
-                                    setTitle("Yeah!")
-                                    setMessage("Your account is created and ready to use. Login and see what other people is up to!")
-                                    setPositiveButton("Continue") { _, _ ->
-                                        finish()
-                                    }
-                                    create()
-                                    show()
+//                userViewModel.saveUser(IsUserLogin(name, email, password, false))
+                showLoading(true)
+                auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this@SignUpActivity) { task ->
+                        if (task.isSuccessful) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "createUserWithEmail:success")
+                            val user = auth.currentUser
+                            updateUI(user)
+                            showLoading(false)
+                            AlertDialog.Builder(this@SignUpActivity).apply {
+                                setTitle("Yeah!")
+                                setMessage("Your account is created and ready to use. Let's log you in!")
+                                setPositiveButton("Log in") { _, _ ->
+                                    val intent = Intent(context, LoginActivity::class.java)
+                                    intent.flags =
+                                        Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                    startActivity(intent)
+                                    finish()
                                 }
+                                create()
+                                show()
                             }
                         } else {
-                            val jsonObj =
-                                JSONObject(response.errorBody()!!.charStream().readText())
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "createUserWithEmail:failure", task.exception)
                             Toast.makeText(
-                                this@SignUpActivity,
-                                jsonObj.getString("message"),
+                                baseContext, "Authentication failed.",
                                 Toast.LENGTH_SHORT
                             ).show()
+                            updateUI(null)
                         }
                     }
-
-                    override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
-                        Toast.makeText(
-                            this@SignUpActivity,
-                            "Gagal mendaftarkan diri",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                })
             }
-            val logIn = Intent(this, LoginActivity::class.java)
-            startActivity(logIn)
         }
     }
 
@@ -173,7 +171,11 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
-    private fun EditText.transformIntoDatePicker(context: Context, format: String, maxDate: Date? = null) {
+    private fun EditText.transformIntoDatePicker(
+        context: Context,
+        format: String,
+        maxDate: Date? = null
+    ) {
         isFocusableInTouchMode = false
         isClickable = true
         isFocusable = false
@@ -200,4 +202,15 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    private fun updateUI(user: FirebaseUser?) {
+
+    }
+
+    companion object {
+        private const val TAG = "EmailPassword"
+    }
 }

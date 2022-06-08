@@ -213,10 +213,12 @@ class DetailPatientActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val CAMERA_X_RESULT = 200
+        const val EXTRA_NAME = "extra_name"
+        const val EXTRA_RMID = "extra_rmid"
 
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
         private const val REQUEST_CODE_PERMISSIONS = 10
+
     }
 
 }

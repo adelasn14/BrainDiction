@@ -62,6 +62,8 @@ interface ApiService {
     ): Call<ArrayList<PatientData>>
 
     @GET("patientlist")
-    fun displayAllPatient(
-    ): Call<ArrayList<PatientData>>
+    suspend fun displayAllPatient(
+        @Query("page") page: Int? = 0,
+        @Query("size") size: Int? = 5
+    ): List<PatientData>
 }

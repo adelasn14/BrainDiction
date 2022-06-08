@@ -34,9 +34,7 @@ class PatientAdapter : RecyclerView.Adapter<PatientAdapter.SearchViewHolder>() {
         val (patientid, name, _, _) = searchPatientData[position]
         holder.binding.tvNoRM.text = StringBuilder().append("ID : ").append(patientid)
         holder.binding.tvPatientName.text = name.toString()
-        holder.itemView.setOnClickListener {
-            onItemClickCallback.onItemClicked(searchPatientData[holder.adapterPosition])
-        }
+
     }
 
     override fun getItemCount() = searchPatientData.size

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.addTextChangedListener
 import androidx.datastore.core.DataStore
@@ -21,6 +22,10 @@ import com.example.braindiction.ui.main.home.HomeActivity
 import com.example.braindiction.ui.signUp.SignUpActivity
 import com.example.braindiction.viewmodel.LoginViewModel
 import com.example.braindiction.viewmodel.UserViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "userLogin")
 class LoginActivity : AppCompatActivity() {
@@ -29,13 +34,26 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var user: IsUserLogin
     private lateinit var loginViewModel: LoginViewModel
 
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        auth = Firebase.auth
+
         setupAction()
         setupViewModel()
+    }
+
+    public override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            reload()
+        }
     }
 
     private fun setMyButtonEnable() {
@@ -76,38 +94,40 @@ class LoginActivity : AppCompatActivity() {
             val email = binding.emailEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
 
-            loginViewModel.doUserLogin(email, password)
-            userViewModel.login()
             showLoading(true)
-            loginViewModel.loginUser.observe(this) {
-                val loginSession = LoginSession(this)
-                loginSession.saveAuthToken(it.LoginResult?.token.toString())
-                Log.d(
-                    "LoginActivity",
-                    "token : ${loginSession.passToken().toString()}"
-                )
-                showLoading(false)
-                AlertDialog.Builder(this).apply {
-                    setTitle("Congratulation!")
-                    setMessage("You are now logging in. Let's connect!")
-                    setPositiveButton("Continue") { _, _ ->
-                        val intent = Intent(context, HomeActivity::class.java)
-                        intent.flags =
-                            Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                        startActivity(intent)
-                        finish()
-                    }
-                    create()
-                    show()
-                }
-            }
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "signInWithEmail:success")
+                        val user = auth.currentUser
+                        updateUI(user)
+                        showLoading(false)
+                        AlertDialog.Builder(this).apply {
+                            setTitle("Yeah!")
+                            setMessage("You are now logging in. Let's connect!")
+                            setPositiveButton("Continue") { _, _ ->
+                                val intent = Intent(context, HomeActivity::class.java)
+                                intent.flags =
+                                    Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                startActivity(intent)
+                                finish()
+                            }
+                            create()
+                            show()
+                        }
 
-            // will be deleted later, only act as navigator
-            val toHome = Intent(this, HomeActivity::class.java)
-            startActivity(toHome)
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w(TAG, "signInWithEmail:failure", task.exception)
+                        Toast.makeText(baseContext, "Wrong password or email.",
+                            Toast.LENGTH_SHORT).show()
+                        updateUI(null)
+                    }
+                }
         }
 
-        binding.signInButton.setOnClickListener {
+        binding.signUpButton.setOnClickListener {
             val toSignUp = Intent(this, SignUpActivity::class.java)
             startActivity(toSignUp)
         }
@@ -115,5 +135,17 @@ class LoginActivity : AppCompatActivity() {
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    private fun updateUI(user: FirebaseUser?) {
+
+    }
+
+    private fun reload() {
+
+    }
+
+    companion object {
+        private const val TAG = "EmailPassword"
     }
 }

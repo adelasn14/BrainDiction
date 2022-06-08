@@ -14,11 +14,8 @@ class ArchiveViewModel : ViewModel() {
     private val _searchPatient = MutableLiveData<ArrayList<PatientData>>()
     val searchPatient: LiveData<ArrayList<PatientData>> = _searchPatient
 
-    private val _listPatient = MutableLiveData<ArrayList<PatientData>>()
-     val listPatient: LiveData<ArrayList<PatientData>> = _listPatient
-
-    fun setSearchPatient(query: String) {
-        val client = ApiConfig().getApiService().searchPatient(query)
+    fun setSearchPatient(patientid: String) {
+        val client = ApiConfig().getApiService().searchPatient(patientid)
         client.enqueue(object : Callback<ArrayList<PatientData>> {
             override fun onResponse(call: Call<ArrayList<PatientData>>, response: Response<ArrayList<PatientData>>) {
                 if (response.isSuccessful) {
@@ -30,25 +27,6 @@ class ArchiveViewModel : ViewModel() {
 
             override fun onFailure(call: Call<ArrayList<PatientData>>, t: Throwable) {
                 Log.e("SearchPatient", "OnFailure : ${t.message}")
-            }
-        })
-    }
-
-    fun displayAllPatient() {
-        val client = ApiConfig().getApiService().displayAllPatient()
-        client.enqueue(object : Callback<ArrayList<PatientData>> {
-            override fun onResponse(
-                call: Call<ArrayList<PatientData>>,
-                response: Response<ArrayList<PatientData>>
-            ) {
-                if (response.isSuccessful) {
-                    _listPatient.value = response.body()
-                    Log.d("DisplayAllPatient", response.toString())
-                }
-            }
-
-            override fun onFailure(call: Call<ArrayList<PatientData>>, t: Throwable) {
-                Log.e("DisplayAllPatient", "OnFailure : ${t.message}")
             }
         })
     }
