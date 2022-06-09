@@ -1,4 +1,4 @@
-package com.example.braindiction.ui
+package com.example.braindiction.ui.welcome
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -22,5 +22,11 @@ class WelcomeActivity : AppCompatActivity() {
             val toLogin = Intent(this, LoginActivity::class.java)
             startActivity(toLogin)
         }
+
+        binding.buttonGyuide.setOnClickListener {
+            val toLogin = Intent(this, GuideActivity::class.java)
+            startActivity(toLogin)
+        }
     }
+
 }
