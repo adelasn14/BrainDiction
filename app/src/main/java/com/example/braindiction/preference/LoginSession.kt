@@ -23,7 +23,4 @@ class LoginSession(context: Context) {
         return loginSession.getString(TOKEN_KEY, null)
     }
 
-    fun logoutSession() {
-        loginSession.edit().clear().apply()
-    }
 }

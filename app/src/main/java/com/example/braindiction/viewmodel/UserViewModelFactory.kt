@@ -14,9 +14,6 @@ class UserViewModelFactory(private val pref: UserPreference) :
         if (modelClass.isAssignableFrom(UserViewModel::class.java)) {
             return UserViewModel(pref) as T
         }
-        if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
-            return LoginViewModel() as T
-        }
         if (modelClass.isAssignableFrom(DetailPatientActivity::class.java)) {
             return DetailPatientActivity() as T
         }

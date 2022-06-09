@@ -8,8 +8,10 @@ import com.example.braindiction.api.ApiService
 import com.example.braindiction.api.PatientData
 import com.example.braindiction.preference.LoginSession
 
-class PatientListPagingSource(private val apiService: ApiService) :
+class PatientListPagingSource(private val apiService: ApiService, context: Context) :
     PagingSource<Int, PatientData>() {
+
+    private var loginSession: LoginSession = LoginSession(context)
 
     private companion object {
         const val INITIAL_PAGE_INDEX = 1
@@ -19,8 +21,9 @@ class PatientListPagingSource(private val apiService: ApiService) :
         return try {
             val position = params.key ?: INITIAL_PAGE_INDEX
 
+            val token = loginSession.passToken().toString()
             val responseData =
-                apiService.displayAllPatient(position, params.loadSize)
+                apiService.displayAllPatient("Bearer $token", position, params.loadSize)
             val data = responseData
             Log.d("PagingSource", "data : $data")
             LoadResult.Page(
