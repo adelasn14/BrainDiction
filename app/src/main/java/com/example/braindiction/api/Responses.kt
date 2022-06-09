@@ -12,23 +12,6 @@ data class UploadResponse(
     val message: String
 )
 
-data class RegisterResponse(
-    val error: Boolean,
-    val message: String
-)
-
-data class LoginResponse(
-    val error: Boolean,
-    val message: String,
-    val LoginResult: LoginResult?
-)
-
-data class LoginResult(
-    var userId: String,
-    var name: String,
-    var token: String
-)
-
 data class ArchivePatientResponse(
     val patient: List<PatientData>
 )
@@ -48,6 +31,16 @@ data class PatientData(
     var sex: Char,
     var dateofbirth: String
 ) : Parcelable
+
+data class UserRegister(
+    val name: String,
+    val username: String,
+    val email: String,
+    val password: String,
+    val gender : String,
+    val dob : String,
+    val address: String
+)
 
 data class IsUserLogin(
     val name: String,

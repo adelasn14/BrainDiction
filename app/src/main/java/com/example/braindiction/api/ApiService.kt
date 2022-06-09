@@ -9,25 +9,6 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 interface ApiService {
-    @FormUrlEncoded
-    @POST("registerdoc")
-    fun userRegister(
-        @Field("name") name: String,
-        @Field("username") username: String,
-        @Field("email") email: String,
-        @Field("password") password: String,
-        @Field("gender") gender: String,
-        @Field("dateofbirth") dob: Date? = null,
-        @Part("address") address: RequestBody
-    ): Call<RegisterResponse>
-
-    @FormUrlEncoded
-    @POST("login")
-    fun userLogin(
-        @Field("email") email: String,
-        @Field("password") password: String
-    ): Call<LoginResponse>
-
     @Multipart
     @POST("imageupload")
     fun uploadImage(
@@ -63,6 +44,7 @@ interface ApiService {
 
     @GET("patientlist")
     suspend fun displayAllPatient(
+        @Header("Authorization") token: String,
         @Query("page") page: Int? = 0,
         @Query("size") size: Int? = 5
     ): List<PatientData>

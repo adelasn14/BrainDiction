@@ -1,5 +1,6 @@
 package com.example.braindiction.paginglistpatient
 
+import android.content.Context
 import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
@@ -12,11 +13,11 @@ class PagingPatientsViewModel(patientRepository: PatientRepository) : ViewModel(
     private val _listPatient = MutableLiveData<List<PatientData>>()
     val listPatient: LiveData<List<PatientData>> = _listPatient
 
-    class PagingViewModelFactory() : ViewModelProvider.Factory {
+    class PagingViewModelFactory(private var context: Context) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(PagingPatientsViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return PagingPatientsViewModel(Injection.provideRepository()) as T
+                return PagingPatientsViewModel(Injection.provideRepository(context)) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class")
         }

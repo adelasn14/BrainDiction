@@ -29,14 +29,13 @@ import com.example.braindiction.viewmodel.ArchiveViewModel
 class ArchiveActivity : AppCompatActivity() {
     private lateinit var binding: ActivityArchiveBinding
     private val pagingViewModel: PagingPatientsViewModel by viewModels {
-        PagingPatientsViewModel.PagingViewModelFactory()
+        PagingPatientsViewModel.PagingViewModelFactory(this)
     }
 
     private lateinit var viewModel: ArchiveViewModel
     private lateinit var adapter: PatientAdapter
     private lateinit var adapterPaging: PatientListPagingAdapter
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityArchiveBinding.inflate(layoutInflater)
@@ -45,9 +44,31 @@ class ArchiveActivity : AppCompatActivity() {
         supportActionBar?.title = "Archive"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        adapter = PatientAdapter()
-        adapter.notifyDataSetChanged()
+        setupViewModel()
+        setupAdapter()
 
+
+        val loginSession = LoginSession(this)
+        val token = loginSession.passToken().toString()
+        showLoading(true)
+        pagingViewModel.allPatient.observe(this) {
+            adapterPaging.submitData(lifecycle, it)
+            showLoading(false)
+        }
+
+        viewModel.searchPatient.observe(this) {
+            if (it != null) {
+                adapter.setListPatient(it)
+                showLoading(false)
+            }
+            if (it.isEmpty()) {
+                binding.notFoundAnimation.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun setupAdapter() {
         adapterPaging = PatientListPagingAdapter()
         adapterPaging.notifyDataSetChanged()
 
@@ -64,14 +85,6 @@ class ArchiveActivity : AppCompatActivity() {
             rvListArchivePatient.adapter = adapterPaging
         }
 
-        val loginSession = LoginSession(this)
-        val token = loginSession.passToken().toString()
-        showLoading(true)
-        pagingViewModel.allPatient.observe(this) {
-            adapterPaging.submitData(lifecycle, it)
-            showLoading(false)
-        }
-
         adapterPaging.setOnItemClickCallback(object : PatientListPagingAdapter.OnItemClickCallback {
             override fun onItemClicked(data: PatientData) {
                 val intentToDetail = Intent(this@ArchiveActivity, DetailPatientActivity::class.java)
@@ -80,20 +93,15 @@ class ArchiveActivity : AppCompatActivity() {
             }
         })
 
+        adapter = PatientAdapter()
+        adapter.notifyDataSetChanged()
+    }
+
+    private fun setupViewModel() {
         viewModel = ViewModelProvider(
             this,
             ViewModelProvider.NewInstanceFactory()
         )[ArchiveViewModel::class.java]
-
-        viewModel.searchPatient.observe(this) {
-            if (it != null) {
-                adapter.setListPatient(it)
-                showLoading(false)
-            }
-            if (it.isEmpty()) {
-                binding.notFoundAnimation.visibility = View.VISIBLE
-            }
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
