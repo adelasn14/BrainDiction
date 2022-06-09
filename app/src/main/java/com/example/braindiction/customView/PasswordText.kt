@@ -32,7 +32,7 @@ class PasswordText : AppCompatEditText {
                 // Do nothing.
             }
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if (s.length < 8) error = "Password must be at least 8 character"
+                if (s.length < 8) error = "Password must be at least 6 character"
             }
             override fun afterTextChanged(s: Editable) {
                 // Do nothing

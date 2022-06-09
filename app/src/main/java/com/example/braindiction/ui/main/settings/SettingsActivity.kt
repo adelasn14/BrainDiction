@@ -17,18 +17,16 @@ import com.example.braindiction.viewmodel.UserViewModelFactory
 import com.example.braindiction.viewmodel.ThemeViewModelFactory
 import com.example.braindiction.databinding.ActivitySettingsBinding
 import com.example.braindiction.preference.SettingPreferences
-import com.example.braindiction.ui.WelcomeActivity
 import com.example.braindiction.ui.login.LoginActivity
 import com.example.braindiction.ui.main.home.HomeActivity
 import com.example.braindiction.ui.main.notification.NotificationActivity
 import com.example.braindiction.ui.main.profile.ProfileActivity
 import com.example.braindiction.viewmodel.ThemeViewModel
 import com.example.braindiction.viewmodel.UserViewModel
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 class SettingsActivity : AppCompatActivity() {
+    private lateinit var userViewModel: UserViewModel
     private lateinit var binding: ActivitySettingsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +39,7 @@ class SettingsActivity : AppCompatActivity() {
         setupNavigation()
         setupLogoutAction()
         switchTheme()
+        setupViewModel()
     }
 
     private fun setupNavigation() {
@@ -101,10 +100,17 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
+    private fun setupViewModel() {
+        userViewModel = ViewModelProvider(
+            this,
+            UserViewModelFactory(UserPreference.getInstance(dataStore))
+        )[UserViewModel::class.java]
+    }
+
     private fun setupLogoutAction() {
         binding.logoutButton.setOnClickListener {
-            Firebase.auth.signOut()
-            val logout = Intent(this, WelcomeActivity::class.java)
+            userViewModel.logout()
+            val logout = Intent(this, LoginActivity::class.java)
             startActivity(logout)
         }
     }
