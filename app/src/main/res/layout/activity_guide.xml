@@ -30,7 +30,7 @@
                 android:text="@string/guide"
                 android:fontFamily="@font/altone_bold"
                 android:textColor="?android:attr/textColorPrimary"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textSize="25sp"/>
 
             <View
@@ -72,6 +72,15 @@
                 android:layout_height="600dp"
                 android:src="@drawable/guide16"
                 android:paddingBottom="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/guide2"
+                android:gravity="center"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="15sp"
+                android:fontFamily="@font/altone_regular" />
 
             <Button
                 android:id="@+id/loginButton"

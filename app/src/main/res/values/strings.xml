@@ -77,5 +77,6 @@
     <string name="welcompage" translatable="false">Welcome To Brain Cancer Prediction</string>
     <string name="getquick">Get Quick your Accuration</string>
     <string name="guide" tools:ignore="ExtraTranslation">we will guide you with this illustration</string>
+    <string name="guide2">Yeay! you\'re finished the guide, let\'s connect</string>
 
 </resources>
