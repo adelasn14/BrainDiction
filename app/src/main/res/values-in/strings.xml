@@ -62,7 +62,7 @@
 
     //welcome
     <string name="getquick">Dapatkan Akurasi Prediksi Di sini</string>
-    <string name="show_on">Cara Penggunaaan</string>
+    <string name="show_on">Panduan</string>
     <string name="information_text">Informasi tentang aplikasi</string>
     <string name="or_text">atau</string>
     <string name="login_text">masuk</string>
@@ -72,5 +72,6 @@
     <string name="Empty">-</string>
     <string name="history">Riwayat</string>
 
+    <string name="guide2">Selamat!, anda telah menyelesaikan buku panduan, beralih ke halaman login</string>
 
 </resources>

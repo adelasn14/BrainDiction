@@ -42,8 +42,8 @@
     <string name="scan">Scan</string>
     <string name="prediction">Prediction</string>
     <string name="date_birth">Enter date birth</string>
-    <string name="woman">F</string>
-    <string name="man">M</string>
+    <string name="woman">Female</string>
+    <string name="man">Male</string>
     <string name="dark_mode_off">Dark Mode OFF</string>
     <string name="dark_mode_on">Dark Mode ON</string>
     <string name="language">Language</string>
@@ -64,13 +64,13 @@
     <string name="or_text">or</string>
     <string name="login_text">login</string>
     <string name="information">Cancer is a leading cause of death worldwide, with an early detection cancer patient can live longer than the unpredicted one. We want to make an application to help oncologists in detecting cancer with the help of machine learning. The app flow is around the oncologist uploading patient’s information (X-rays) to the app and the app is giving out percentage rate and the output prediction.</string>
-    <string name="welcompage" translatable="false">Welcome To Brain Cancer Prediction</string>
+    <string name="welcompage" translatable="false">Welcome To Brain Tumor Detection</string>
     <string name="getquick">Get Quick your Accuration</string>
     <string name="guide" tools:ignore="ExtraTranslation">we will guide you with this illustration</string>
     <string name="date_of_birth">Date of Birth</string>
     <string name="Empty">-</string>
     <string name="history">History</string>
 <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="guide2">Yeay! you\'re finished the guide, let\'s connect</string>
 
 </resources>
