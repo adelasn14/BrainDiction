@@ -28,6 +28,7 @@
         android:fontFamily="@font/altone_bold"
         android:text="@string/prediction"
         android:textSize="14sp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="@+id/previewImageView"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/previewImageView"
@@ -69,15 +70,80 @@
         android:id="@+id/predictButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:visibility="gone"
-        android:fontFamily="@font/altone_bold"
-        android:textSize="13sp"
-        android:text="@string/predict"
+        android:layout_marginTop="32dp"
         android:backgroundTint="@color/palette_darker_purple"
+        android:fontFamily="@font/altone_bold"
+        android:text="@string/predict"
+        android:textSize="13sp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/predictResult_tv"
         app:layout_constraintStart_toStartOf="@+id/predictResult_tv"
         app:layout_constraintTop_toBottomOf="@+id/predictResult_tv"
-        tools:visibility="visible"/>
+        tools:visibility="visible" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="24dp"
+        app:collapsedSize="75dp"
+        app:icon="@drawable/ic_add_24"
+        app:iconSize="35dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="36dp"
+        android:src="@drawable/ic_scanner_24"
+        app:fabCustomSize="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/fab_action"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/add_scan_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/altone_regular"
+        android:text="@string/scan"
+        android:textColor="?android:attr/textColorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/fab_scan"
+        app:layout_constraintEnd_toStartOf="@+id/fab_scan"
+        tools:ignore="MissingConstraints" />
+
+    <!--Action name text for the add import photo button-->
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_gallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/ic_insert_photo_24"
+        app:fabCustomSize="60dp"
+        app:layout_constraintBottom_toTopOf="@+id/fab_scan"
+        app:layout_constraintEnd_toEndOf="@+id/fab_action"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/add_import_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/altone_regular"
+        android:text="@string/upload"
+        android:textColor="?android:attr/textColorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/fab_gallery"
+        app:layout_constraintEnd_toStartOf="@+id/fab_gallery"
+        tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

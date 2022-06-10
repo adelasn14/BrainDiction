@@ -8,13 +8,13 @@
 
     <Button
         android:id="@+id/newPredictionButton"
-        android:layout_width="wrap_content"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="292dp"
         android:backgroundTint="@color/mouse_hover_effect"
+        android:drawableEnd="@drawable/ic_online_prediction_24"
         android:fontFamily="@font/altone_bold"
-        android:text="@string/new_prediction"
-        android:drawableRight="@drawable/ic_online_prediction_24"
+        android:text="@string/new_patient"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,33 +22,17 @@
 
     <Button
         android:id="@+id/archiveButton"
-        android:layout_width="204dp"
-        android:layout_height="45dp"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:backgroundTint="@color/mouse_hover_effect"
-        android:drawableRight="@drawable/ic_archive_24"
+        android:drawableEnd="@drawable/ic_archive_24"
         android:fontFamily="@font/altone_bold"
         android:text="@string/archive"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/newPredictionButton"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/newPredictionButton"
         app:layout_constraintTop_toBottomOf="@+id/newPredictionButton" />
-
-    <Button
-        android:id="@+id/detailPatientButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/archiveButton" />
-
-    <Button
-        android:id="@+id/predictionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailPatientButton" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"

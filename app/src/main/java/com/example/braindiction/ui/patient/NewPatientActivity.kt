@@ -17,6 +17,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.braindiction.api.AddNewPatientResponse
 import com.example.braindiction.api.ApiConfig
 import com.example.braindiction.databinding.ActivityNewPatientBinding
+import com.example.braindiction.preference.LoginSession
 import com.example.braindiction.ui.main.home.HomeActivity
 import retrofit2.Call
 import retrofit2.Callback
@@ -71,7 +72,7 @@ class NewPatientActivity : AppCompatActivity() {
             myCalendar.set(Calendar.MONTH,month)
             myCalendar.set(Calendar.DAY_OF_MONTH,day)
 
-            val sdfView = SimpleDateFormat("dd-MM-yyyy", Locale.US)
+            val sdfView = SimpleDateFormat("dd-MMM-yyyy", Locale.US)
             birthEd.setText(sdfView.format(myCalendar.time))
         }
 
@@ -102,7 +103,10 @@ class NewPatientActivity : AppCompatActivity() {
                 val _addNewPatient = MutableLiveData<AddNewPatientResponse>()
                 val addNewPatient: LiveData<AddNewPatientResponse> = _addNewPatient
 
-                val client = ApiConfig().getApiService().patientRegister(
+
+                val loginSession = LoginSession(this@NewPatientActivity)
+                val token = loginSession.passToken().toString()
+                val client = ApiConfig().getApiService().patientRegister("Bearer $token",
                     AddNewPatientResponse(name, setGender,
                         dobValue, address)
                 )
@@ -125,8 +129,8 @@ class NewPatientActivity : AppCompatActivity() {
                     }
                 })
                 AlertDialog.Builder(this@NewPatientActivity).apply {
-                    setTitle("Yeah!")
-                    setMessage("You are now logging in. Let's connect!")
+                    setTitle("Congratulations!")
+                    setMessage("Patient data has successfully been submitted.")
                     setPositiveButton("Continue") { _, _ ->
                         val intent = Intent(context, DetailPatientActivity::class.java)
                         intent.flags =

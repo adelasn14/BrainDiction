@@ -5,14 +5,12 @@ import android.app.SearchManager
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.KeyEvent
 import android.view.Menu
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.braindiction.R
@@ -21,7 +19,6 @@ import com.example.braindiction.adapter.PatientListPagingAdapter
 import com.example.braindiction.api.PatientData
 import com.example.braindiction.databinding.ActivityArchiveBinding
 import com.example.braindiction.paginglistpatient.PagingPatientsViewModel
-import com.example.braindiction.preference.LoginSession
 import com.example.braindiction.ui.main.home.HomeActivity
 import com.example.braindiction.ui.patient.DetailPatientActivity
 import com.example.braindiction.viewmodel.ArchiveViewModel
@@ -47,9 +44,6 @@ class ArchiveActivity : AppCompatActivity() {
         setupViewModel()
         setupAdapter()
 
-
-        val loginSession = LoginSession(this)
-        val token = loginSession.passToken().toString()
         showLoading(true)
         pagingViewModel.allPatient.observe(this) {
             adapterPaging.submitData(lifecycle, it)

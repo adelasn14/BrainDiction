@@ -21,12 +21,4 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.BrainDiction.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="Theme.BrainDiction.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.BrainDiction.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

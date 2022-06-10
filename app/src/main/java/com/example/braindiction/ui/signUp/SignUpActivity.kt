@@ -16,12 +16,10 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.example.braindiction.R
-import com.example.braindiction.preference.UserPreference
 import com.example.braindiction.viewmodel.UserViewModelFactory
 import com.example.braindiction.api.UserRegister
 import com.example.braindiction.databinding.ActivitySignUpBinding
 import com.example.braindiction.ui.login.LoginActivity
-import com.example.braindiction.viewmodel.UserViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -34,7 +32,6 @@ private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(na
 class SignUpActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignUpBinding
-    private lateinit var userViewModel: UserViewModel
 
     private lateinit var auth: FirebaseAuth
 
@@ -64,10 +61,6 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        userViewModel = ViewModelProvider(
-            this,
-            UserViewModelFactory(UserPreference.getInstance(dataStore))
-        )[UserViewModel::class.java]
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -136,7 +129,7 @@ class SignUpActivity : AppCompatActivity() {
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener { it ->
                         if (it.isSuccessful) {
-                            val userRegister = UserRegister(name,username,email,password,setGender,dobValue, address)
+                            val userRegister = UserRegister(name,username,email,password,setGender,dobValue, address, occupation.toString())
                             FirebaseAuth.getInstance().currentUser?.let { it1 ->
                                 FirebaseDatabase.getInstance().getReference("User Doctor Register").child(
                                     it1.uid).setValue(userRegister).addOnCompleteListener {

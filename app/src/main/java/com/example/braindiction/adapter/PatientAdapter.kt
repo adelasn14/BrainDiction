@@ -32,8 +32,8 @@ class PatientAdapter : RecyclerView.Adapter<PatientAdapter.SearchViewHolder>() {
     @Suppress("DEPRECATION")
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         val (patientid, name, _, _) = searchPatientData[position]
-        holder.binding.tvNoRM.text = StringBuilder().append("ID : ").append(patientid)
-        holder.binding.tvPatientName.text = name.toString()
+        holder.binding.tvPatient.text = StringBuilder().append("ID : ").append(patientid)
+        holder.binding.tvNorm.text = name.toString()
 
     }
 

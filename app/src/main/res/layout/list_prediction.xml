@@ -17,7 +17,7 @@
         android:padding="8dp">
 
         <TextView
-            android:id="@+id/tv_patient"
+            android:id="@+id/tv_prediction"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
@@ -26,7 +26,7 @@
             android:fontFamily="@font/altone_regular"
             android:paddingHorizontal="5dp"
             android:paddingVertical="5dp"
-            android:text="@string/patient_name"
+            android:text="@string/prediction"
             android:textSize="15sp"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintHorizontal_bias="0.0"
@@ -34,7 +34,7 @@
             card_view:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_norm"
+            android:id="@+id/tv_history"
             android:layout_width="0dp"
             android:layout_height="25dp"
             android:layout_marginTop="4dp"
@@ -42,12 +42,12 @@
             android:fontFamily="@font/altone_regular"
             android:paddingHorizontal="5dp"
             android:paddingVertical="5dp"
-            android:text="@string/rm"
+            android:text="@string/history"
             android:textSize="12sp"
             card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintEnd_toEndOf="@+id/tv_patient"
-            card_view:layout_constraintStart_toStartOf="@+id/tv_patient"
-            card_view:layout_constraintTop_toBottomOf="@+id/tv_patient" />
+            card_view:layout_constraintEnd_toEndOf="@+id/tv_prediction"
+            card_view:layout_constraintStart_toStartOf="@+id/tv_prediction"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_prediction" />
 
         <ProgressBar
             android:id="@+id/progressBar"

@@ -23,10 +23,10 @@ interface ApiService {
         @Path("username") username: String
     ): ArchivePatientResponse
 
-    @GET("predict/{username}/history")
+    @GET("predictionlist")
     fun getHistoryPrediction(
         @Header("Authorization") token: String,
-        @Path("username") username: String,
+        @Path("patientid") patientid: Int,
     ): Call<ArrayList<User>>
 
     @Headers(
@@ -34,6 +34,7 @@ interface ApiService {
     )
     @POST("registerpatient")
     fun patientRegister(
+        @Header("Authorization") token: String,
         @Body user: AddNewPatientResponse
     ): Call<AddNewPatientResponse>
 

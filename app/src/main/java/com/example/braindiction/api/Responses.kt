@@ -29,28 +29,24 @@ data class PatientData(
     var patientid : Int,
     var name: String? = null,
     var sex: Char,
-    var dateofbirth: String
+    var dateofbirth: String,
+    var address: String? = null
 ) : Parcelable
 
 data class UserRegister(
-    val name: String,
-    val username: String,
-    val email: String,
-    val password: String,
-    val gender : String,
-    val dob : String,
-    val address: String
+    val name: String? = "",
+    val username: String? = "",
+    val email: String? = "",
+    val password: String? = "",
+    val gender : String? = "",
+    val dob : String? = "",
+    val address: String? = "",
+    val occupation: String? = ""
 )
 
-data class IsUserLogin(
-    val name: String,
-    val email: String,
-    val password: String,
-    val isLogin: Boolean
-)
-
+@Parcelize
 data class User(
-    val id: Int,
-    val username: String,
-    val history: Date
-)
+    @PrimaryKey
+    val prediction: String,
+    val history: String
+) : Parcelable

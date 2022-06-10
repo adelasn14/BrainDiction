@@ -36,8 +36,8 @@ class PatientListPagingAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: PatientData) {
             binding.apply {
-                tvPatientName.text = data.name
-                tvNoRM.text = data.patientid.toString()
+                tvPatient.text = data.name
+                tvNorm.text = data.patientid.toString()
 
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailPatientActivity::class.java)

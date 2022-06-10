@@ -7,121 +7,172 @@
     tools:context=".ui.patient.DetailPatientActivity">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
+        android:id="@+id/patientId"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:textColor="?android:attr/textColorPrimary"
-        android:text="@string/patient_name"
+        android:layout_marginTop="52dp"
+        android:fontFamily="@font/altone_bold"
+        android:text="@string/rm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.924"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/fab_action"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/tv_patientId"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="44dp"
-        app:collapsedSize="75dp"
-        app:icon="@drawable/ic_add_24"
-        app:iconSize="35dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <!--Action name text for the add scan button-->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_scan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="28dp"
-        android:src="@drawable/ic_scanner_24"
-        app:fabCustomSize="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/fab_action"
-        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/altone_regular"
+        android:text="@string/rm"
+        app:layout_constraintEnd_toEndOf="@+id/patientId"
+        app:layout_constraintStart_toStartOf="@+id/patientId"
+        app:layout_constraintTop_toBottomOf="@+id/patientId" />
 
     <TextView
-        android:id="@+id/add_scan_button"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_patient"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/altone_regular"
-        android:text="@string/scan"
+        android:text="@string/patient_name"
         android:textColor="?android:attr/textColorPrimary"
-        app:layout_constraintBottom_toBottomOf="@+id/fab_scan"
-        app:layout_constraintEnd_toStartOf="@+id/fab_scan"
-        tools:ignore="MissingConstraints" />
-
-    <!--Action name text for the add import photo button-->
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_gallery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="36dp"
-        android:src="@drawable/ic_insert_photo_24"
-        app:fabCustomSize="60dp"
-        app:layout_constraintBottom_toTopOf="@+id/fab_scan"
-        app:layout_constraintEnd_toStartOf="@+id/fab_predict"
-        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+        app:layout_constraintEnd_toEndOf="@+id/patientName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/patientName"
+        app:layout_constraintTop_toBottomOf="@+id/patientName" />
 
     <TextView
-        android:id="@+id/add_import_image"
-        android:layout_width="wrap_content"
+        android:id="@+id/patientName"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="24dp"
-        android:fontFamily="@font/altone_regular"
-        android:text="@string/upload"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/altone_bold"
+        android:text="@string/name"
         android:textColor="?android:attr/textColorPrimary"
-        app:layout_constraintBottom_toBottomOf="@+id/fab_gallery"
-        app:layout_constraintEnd_toStartOf="@+id/fab_gallery"
-        tools:ignore="MissingConstraints" />
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_patientId"
+        app:layout_constraintHorizontal_bias="0.572"
+        app:layout_constraintStart_toStartOf="@+id/tv_patientId"
+        app:layout_constraintTop_toBottomOf="@+id/tv_patientId" />
 
-    <!--Action name text for the prediction button-->
+    <TextView
+        android:id="@+id/dob"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/altone_bold"
+        android:text="@string/date_of_birth"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_patient"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_patient"
+        app:layout_constraintTop_toBottomOf="@id/tv_patient" />
+
+    <TextView
+        android:id="@+id/tv_dob"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/altone_regular"
+        android:text="@string/date_of_birth"
+        android:textColor="?android:attr/textColorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/dob"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/dob"
+        app:layout_constraintTop_toBottomOf="@id/dob" />
+
+    <TextView
+        android:id="@+id/gender"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/altone_bold"
+        android:text="@string/jenis_kelamin"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_dob"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_dob"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dob" />
+
+    <TextView
+        android:id="@+id/tv_gender"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/altone_regular"
+        android:text="@string/jenis_kelamin"
+        android:textColor="?android:attr/textColorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/gender"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/gender"
+        app:layout_constraintTop_toBottomOf="@+id/gender" />
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/altone_regular"
+        android:text="@string/alamat"
+        android:textColor="?android:attr/textColorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/address"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/address"
+        app:layout_constraintTop_toBottomOf="@id/address" />
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/altone_bold"
+        android:text="@string/alamat"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_gender"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_gender"
+        app:layout_constraintTop_toBottomOf="@id/tv_gender" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_predict"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
         android:src="@drawable/ic_online_prediction_24"
         app:fabCustomSize="60dp"
-        app:layout_constraintBottom_toTopOf="@+id/fab_action"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
-    <TextView
-        android:id="@+id/see_prediction"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container_view"
+        android:name="com.example.braindiction.ui.prediction.HistoryPredictionFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_address" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/altone_regular"
-        android:text="@string/prediction"
-        android:textColor="?android:attr/textColorPrimary"
-        app:layout_constraintBottom_toTopOf="@+id/fab_predict"
-        app:layout_constraintEnd_toEndOf="@+id/fab_predict"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/previewImageView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="96dp"
-        android:layout_marginEnd="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_place_holder"
-        tools:ignore="ContentDescription" />
+        tools:visibility="visible" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
