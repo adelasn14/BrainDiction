@@ -40,37 +40,37 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="600dp"
-                android:src="@drawable/guide1"
+                android:src="@drawable/guidepic1"
                 android:paddingBottom="20dp"/>
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="600dp"
-                android:src="@drawable/guide12"
+                android:src="@drawable/guidepic12"
                 android:paddingBottom="20dp"/>
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="600dp"
-                android:src="@drawable/guide13"
+                android:src="@drawable/guidepic13"
                 android:paddingBottom="20dp"/>
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="600dp"
-                android:src="@drawable/guide14"
+                android:src="@drawable/guidepic14"
                 android:paddingBottom="20dp"/>
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="600dp"
-                android:src="@drawable/guide15"
+                android:src="@drawable/guidepic15"
                 android:paddingBottom="20dp"/>
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="600dp"
-                android:src="@drawable/guide16"
+                android:src="@drawable/guidepic16"
                 android:paddingBottom="20dp"/>
 
             <TextView
