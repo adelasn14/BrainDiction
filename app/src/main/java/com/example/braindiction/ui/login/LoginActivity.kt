@@ -104,8 +104,8 @@ class LoginActivity : AppCompatActivity() {
                 }
 
             val mUser = FirebaseAuth.getInstance().currentUser
-            mUser!!.getIdToken(true)
-                .addOnCompleteListener { task ->
+            mUser?.getIdToken(true)
+                ?.addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         val idToken: String? = task.result.token
                         val loginSession = LoginSession(this)
