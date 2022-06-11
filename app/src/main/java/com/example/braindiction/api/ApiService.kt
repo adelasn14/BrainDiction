@@ -10,23 +10,17 @@ import kotlin.collections.ArrayList
 
 interface ApiService {
     @Multipart
-    @POST("imageupload")
-    fun uploadImage(
-        @Header("Authorization") authToken: String,
+    @POST("predict/{patientid}")
+    fun uploadXray(
+        @Path("patientid") patientid: Int,
+        @Header("Authorization") token: String,
         @Part file: MultipartBody.Part
-    ): Call<UploadResponse>
-
-    @GET("predict")
-    suspend fun getPredictPatient(
-        @Header("Authorization") authToken: String,
-        @Header("imageUrl") imgUrl: String,
-        @Path("username") username: String
-    ): ArchivePatientResponse
+    ) : Call<UploadResponse>
 
     @GET("predictionlist")
     fun getHistoryPrediction(
         @Header("Authorization") token: String,
-        @Path("patientid") patientid: Int,
+        @Query("patientid") patientid: Int,
     ): Call<ArrayList<User>>
 
     @Headers(

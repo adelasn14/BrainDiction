@@ -66,7 +66,7 @@ class SignUpActivity : AppCompatActivity() {
     @SuppressLint("SimpleDateFormat")
     private fun setupAction() {
         binding.nameEditText.addTextChangedListener {
-            setMyButtonEnable()
+             setMyButtonEnable()
         }
 
         binding.usernameEditText.addTextChangedListener {

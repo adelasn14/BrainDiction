@@ -8,8 +8,8 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 data class UploadResponse(
-    val error: Boolean,
-    val message: String
+    val persentage: Float,
+    val prediction: String
 )
 
 data class ArchivePatientResponse(

@@ -15,6 +15,7 @@ import java.util.*
 
 class DetailPatientActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailPatientBinding
+    private var patientid: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +57,7 @@ class DetailPatientActivity : AppCompatActivity() {
     private fun fabAction(){
         binding.apply {
             val toPrediction = Intent(this@DetailPatientActivity, PredictionActivity::class.java)
+            toPrediction.putExtra(PredictionActivity.EXTRA_ID, patientid)
             startActivity(toPrediction)
             }
         }

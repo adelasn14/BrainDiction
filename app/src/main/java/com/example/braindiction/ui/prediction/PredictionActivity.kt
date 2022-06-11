@@ -8,16 +8,30 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.example.braindiction.api.ApiConfig
+import com.example.braindiction.api.UploadResponse
 import com.example.braindiction.databinding.ActivityPredictionBinding
+import com.example.braindiction.preference.LoginSession
 import com.example.braindiction.ui.patient.DetailPatientActivity
+import com.example.braindiction.ui.reduceFileImage
 import com.example.braindiction.ui.uriToFile
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.File
 
 
@@ -46,6 +60,7 @@ class PredictionActivity : AppCompatActivity() {
         binding.apply {
             fabScan.setOnClickListener{startTakePhoto()}
             fabGallery.setOnClickListener{startGallery()}
+            predictButton.setOnClickListener { uploadXray() }
         }
     }
 
@@ -127,6 +142,90 @@ class PredictionActivity : AppCompatActivity() {
         }
     }
 
+    private fun uploadXray() {
+        val _predictResult = MutableLiveData<UploadResponse>()
+        val predictResult: LiveData<UploadResponse> = _predictResult
+
+        if (getFile != null) {
+            binding.apply {
+                predictTv.visibility = View.VISIBLE
+                predictResultTv.visibility = View.VISIBLE
+                predictButton.visibility = View.VISIBLE
+            }
+
+            val patientid = intent.getIntExtra(EXTRA_ID, 0)
+
+            val file = reduceFileImage(getFile as File)
+
+            val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
+            val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
+                "photo",
+                file.name,
+                requestImageFile
+            )
+
+            val loginSession = LoginSession(this)
+            val service = ApiConfig().getApiService().uploadXray(
+                patientid, "Bearer ${loginSession.passToken().toString()}", imageMultipart
+            )
+            service.enqueue(object : Callback<UploadResponse> {
+                override fun onResponse(
+                    call: Call<UploadResponse>,
+                    response: Response<UploadResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        val responseBody = response.body()
+                        if (responseBody != null) {
+                            Log.d("PredictionActivity", responseBody.toString())
+                            AlertDialog.Builder(this@PredictionActivity).apply {
+                                predictResult.observe(this@PredictionActivity) {
+                                    if (it != null) {
+                                        showLoading(false)
+                                        binding.apply {
+                                            predictResultTv.text = StringBuilder().append(it.persentage.toString()).append("%")
+                                            predictResultTv.text = StringBuilder().append("Prediction : ").append(it.prediction)
+                                        }
+                                    }
+                                }
+                                setTitle("Yeah!")
+                                setMessage("Prediksi anda sudah selesai.")
+                                setPositiveButton("Lihat prediksi") { _, _ ->
+                                    val intent = Intent(context, PredictionActivity::class.java)
+                                    intent.flags =
+                                        Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                    startActivity(intent)
+                                    finish()
+                                }
+                                create()
+                                show()
+                            }
+                        }
+                    } else {
+                        Toast.makeText(
+                            this@PredictionActivity,
+                            response.message(),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<UploadResponse>, t: Throwable) {
+                    Toast.makeText(
+                        this@PredictionActivity,
+                        "Gagal instance Retrofit",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
+        } else {
+            Toast.makeText(
+                this@PredictionActivity,
+                "Silakan masukkan berkas gambar terlebih dahulu.",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
     private fun fabAddAction(){
         binding.apply {
             //button
@@ -168,9 +267,16 @@ class PredictionActivity : AppCompatActivity() {
         }
     }
 
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
     companion object {
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
         private const val REQUEST_CODE_PERMISSIONS = 10
+
+        const val EXTRA_ID = "extra_id"
+
     }
 
 }
