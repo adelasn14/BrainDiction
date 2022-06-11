@@ -15,7 +15,9 @@
         app:layout_constraintHorizontal_bias="0.132"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_person"
         tools:ignore="ContentDescription"
+        android:onClick="actionPP"
         tools:src="@tools:sample/avatars" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -32,16 +34,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/bottom_nav_menu" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="141dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="141dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/ev_username"

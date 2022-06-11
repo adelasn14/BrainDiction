@@ -7,7 +7,7 @@
 
     // ui
     <string name="noaccount">Tidak punya akun?</string>
-    <string name="message_welcome_page">Prediksi Kanker dengan aplikasi kami, BrainDiction!</string>
+    <string name="message_welcome_page">Prediksi Tumor Otak dengan aplikasi kami, BrainDiction!</string>
     <string name="title_welcome_page">Selamat Datang di BrainDiction!</string>
     <string name="title_signup_page">Masukkan data Anda untuk mendaftar!</string>
     <string name="email">Email</string>

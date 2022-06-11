@@ -6,7 +6,7 @@
 
     // ui
     <string name="noaccount">Don\'t have an account?</string>
-    <string name="message_welcome_page">Predict Cancer with our app BrainDiction!</string>
+    <string name="message_welcome_page">Predict Brain Tumor with our app BrainDiction!</string>
     <string name="title_welcome_page">Welcome to BrainDiction!</string>
     <string name="title_signup_page">Fill in your data here to register</string>
     <string name="email">Email</string>

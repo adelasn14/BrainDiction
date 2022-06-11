@@ -34,6 +34,7 @@ interface ApiService {
 
     @GET("patientlist")
     fun searchPatient(
+        @Header("Authorization") token: String,
         @Query("patientid") patientid : String
     ): Call<ArrayList<PatientData>>
 

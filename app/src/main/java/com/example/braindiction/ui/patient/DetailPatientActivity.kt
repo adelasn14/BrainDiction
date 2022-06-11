@@ -15,7 +15,6 @@ import java.util.*
 
 class DetailPatientActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailPatientBinding
-    private var patientid: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,12 +32,13 @@ class DetailPatientActivity : AppCompatActivity() {
         val sdfConvert = SimpleDateFormat("dd-MMM-yyyy", Locale.US)
 
         val detail = intent.getParcelableExtra<PatientData>(EXTRA_NAME)
+        Log.d("parcelize", "data parcelize : $detail")
         binding.apply {
             tvPatientId.text = detail?.patientid.toString()
             tvPatient.text = detail?.name
 
-            val dateValue = formatSQL.parse(detail?.dateofbirth.toString()) as Date
-            val dobPatient = sdfConvert.format(dateValue)
+            val dateValue = formatSQL.parse(detail?.dateofbirth.toString())
+            val dobPatient = dateValue?.let { sdfConvert.format(it) }
             Log.d("Detail Patient", "dobPatient : $dobPatient")
 
             tvDob.text = dobPatient

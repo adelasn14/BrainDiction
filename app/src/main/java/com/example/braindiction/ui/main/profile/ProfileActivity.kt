@@ -1,12 +1,21 @@
 package com.example.braindiction.ui.main.profile
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
+import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.FileProvider
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.braindiction.R
 import com.example.braindiction.api.UserRegister
 import com.example.braindiction.databinding.ActivityProfileBinding
@@ -14,6 +23,7 @@ import com.example.braindiction.ui.main.home.HomeActivity
 import com.example.braindiction.ui.main.notification.NotificationActivity
 import com.example.braindiction.ui.main.settings.SettingsActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -22,6 +32,8 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -30,8 +42,12 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding
     private lateinit var database: DatabaseReference
     private lateinit var userProfile: UserRegister
-    private lateinit var storage: StorageReference
+    private lateinit var storage: FirebaseStorage
     private lateinit var userId: String
+
+    private var getFile: File? = null
+
+    private lateinit var currentPhotoPath: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +58,7 @@ class ProfileActivity : AppCompatActivity() {
 
         database = Firebase.database.getReference("User Doctor Register")
         userId = FirebaseAuth.getInstance().currentUser?.uid.toString()
+        storage = Firebase.storage
 
         if (userId.isNotEmpty())
         {
@@ -71,8 +88,6 @@ class ProfileActivity : AppCompatActivity() {
                         val dateValue = formatSQL.parse(userProfile.dob.toString()) as Date
                         val dobPatient = sdfConvert.format(dateValue)
                         evDob.text = dobPatient
-
-                        getProfilePicture()
                     }
 
                     override fun onCancelled(error: DatabaseError) {
@@ -81,21 +96,6 @@ class ProfileActivity : AppCompatActivity() {
                     }
 
                 })
-        }
-    }
-
-    private fun getProfilePicture() {
-        showLoading(true)
-        storage = FirebaseStorage.getInstance().reference.child("User Doctor Register/$userId.jpg")
-        val localImage = File.createTempFile("tempImg", "jpg")
-        storage.getFile(localImage).addOnSuccessListener {
-            val bitmap = BitmapFactory.decodeFile(localImage.absolutePath)
-            binding.imageView.setImageBitmap(bitmap)
-            showLoading(false)
-
-        }.addOnFailureListener{
-            showLoading(false)
-            Toast.makeText(this, "Failed to retrieve profile picture", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -129,25 +129,109 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupUpdateProfile() {
-        showLoading(true)
-        storage.child("mountains.jpg")
-        storage.child("images/mountains.jpg")
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
 
-        val file = Uri.fromFile(File("path/to/images/rivers.jpg"))
-        val riversRef = storage.child("images/${file.lastPathSegment}")
-        val uploadTask = riversRef.putFile(file)
-
-        uploadTask.addOnFailureListener {
-            showLoading(false)
-            Toast.makeText(this, "Failed to retrieve profile picture", Toast.LENGTH_SHORT).show()
-
-        }.addOnSuccessListener { taskSnapshot ->
-           
+    fun actionPP(view: View) {
+        AlertDialog.Builder(this).apply {
+            setMessage("What do you want to do?")
+            setPositiveButton("See profile picture") { _, _ ->
+                val intent = Intent(context, launcherIntentCamera::class.java)
+                intent.flags =
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+                finish()
+            }
+            setNegativeButton("Update profile picture") { _, _ ->
+                startTakePhoto()
+            }
+            create()
+            show()
         }
     }
 
-    private fun showLoading(isLoading: Boolean) {
-        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    @SuppressLint("QueryPermissionsNeeded")
+    private fun startTakePhoto() {
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        intent.resolveActivity(packageManager)
+
+        com.example.braindiction.ui.createTempFile(application).also {
+            val photoURI: Uri = FileProvider.getUriForFile(
+                this,
+                "com.example.braindiction",
+                it
+            )
+            currentPhotoPath = it.absolutePath
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+            launcherIntentCamera.launch(intent)
+        }
+    }
+
+    private val launcherIntentCamera = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        if (it.resultCode == RESULT_OK) {
+            val myFile = File(currentPhotoPath)
+            getFile = myFile
+
+            val result = BitmapFactory.decodeFile(getFile?.path)
+
+            Glide.with(this)
+                .load(result)
+                .circleCrop()
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .into(binding.imgProfileAvatar)
+
+            uploadToFirebase(result)
+        }
+    }
+
+    private fun uploadToFirebase(bitmap: Bitmap) {
+        val profilePicture = storage.reference.child("userProfilImage")
+            .child("$userId.jpeg")
+
+        val baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+
+        val data = baos.toByteArray()
+
+        val uploadTask = profilePicture.putBytes(data)
+        uploadTask.addOnFailureListener {
+            Log.e(TAG, "onFailure : ${it.cause}")
+            Toast.makeText(this,"Failed uploading to server.",Toast.LENGTH_SHORT).show()
+        }.addOnSuccessListener {
+            displayProfilePicture(profilePicture)
+        }
+    }
+
+    private fun displayProfilePicture(profilePicture: StorageReference){
+        profilePicture.downloadUrl
+            .addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Log.d(TAG, "onSuccess : $task")
+                getDPUploaded(task.result)
+            }
+        }
+    }
+
+    private fun getDPUploaded(uri: Uri) {
+        val currentUser = FirebaseAuth.getInstance().currentUser
+
+        val req = UserProfileChangeRequest.Builder()
+            .setPhotoUri(uri).build()
+
+        val uploadTask = currentUser?.updateProfile(req)
+        uploadTask?.addOnSuccessListener {
+            Toast.makeText(this, "Successfully updated", Toast.LENGTH_SHORT).show()
+        }?.addOnFailureListener {
+            Toast.makeText(this, "Display picture failed...", Toast.LENGTH_SHORT).show()
+            }
+
+
+        }
+
+    companion object {
+        const val TAG = "ProfilePicture"
     }
 }

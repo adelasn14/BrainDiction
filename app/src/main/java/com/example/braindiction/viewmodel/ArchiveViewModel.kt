@@ -24,8 +24,8 @@ class ArchiveViewModel : ViewModel() {
     private val _listHistoryPrediction = MutableLiveData<ArrayList<User>>()
     val listHistoryPrediction: LiveData<ArrayList<User>> = _listHistoryPrediction
 
-    fun setSearchPatient(patientid: String) {
-        val client = ApiConfig().getApiService().searchPatient(patientid)
+    fun setSearchPatient(token: String,patientid: String) {
+        val client = ApiConfig().getApiService().searchPatient(token,patientid)
         client.enqueue(object : Callback<ArrayList<PatientData>> {
             override fun onResponse(call: Call<ArrayList<PatientData>>, response: Response<ArrayList<PatientData>>) {
                 if (response.isSuccessful) {

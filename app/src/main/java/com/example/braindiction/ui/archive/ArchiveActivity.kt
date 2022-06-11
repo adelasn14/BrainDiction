@@ -10,6 +10,8 @@ import android.view.Menu
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isEmpty
+import androidx.core.view.isNotEmpty
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +21,7 @@ import com.example.braindiction.adapter.PatientListPagingAdapter
 import com.example.braindiction.api.PatientData
 import com.example.braindiction.databinding.ActivityArchiveBinding
 import com.example.braindiction.paginglistpatient.PagingPatientsViewModel
+import com.example.braindiction.preference.LoginSession
 import com.example.braindiction.ui.main.home.HomeActivity
 import com.example.braindiction.ui.patient.DetailPatientActivity
 import com.example.braindiction.viewmodel.ArchiveViewModel
@@ -43,22 +46,6 @@ class ArchiveActivity : AppCompatActivity() {
 
         setupViewModel()
         setupAdapter()
-
-        showLoading(true)
-        pagingViewModel.allPatient.observe(this) {
-            adapterPaging.submitData(lifecycle, it)
-            showLoading(false)
-        }
-
-        viewModel.searchPatient.observe(this) {
-            if (it != null) {
-                adapter.setListPatient(it)
-                showLoading(false)
-            }
-            if (it.isEmpty()) {
-                binding.notFoundAnimation.visibility = View.VISIBLE
-            }
-        }
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -66,18 +53,8 @@ class ArchiveActivity : AppCompatActivity() {
         adapterPaging = PatientListPagingAdapter()
         adapterPaging.notifyDataSetChanged()
 
-        binding.apply {
-            val layoutManagerPaging = LinearLayoutManager(this@ArchiveActivity)
-            rvListArchivePatient.layoutManager = layoutManagerPaging
-            rvListArchivePatient.addItemDecoration(
-                DividerItemDecoration(
-                    this@ArchiveActivity,
-                    layoutManagerPaging.orientation
-                )
-            )
-            rvListArchivePatient.setHasFixedSize(true)
-            rvListArchivePatient.adapter = adapterPaging
-        }
+        adapter = PatientAdapter()
+        adapter.notifyDataSetChanged()
 
         adapterPaging.setOnItemClickCallback(object : PatientListPagingAdapter.OnItemClickCallback {
             override fun onItemClicked(data: PatientData) {
@@ -87,8 +64,13 @@ class ArchiveActivity : AppCompatActivity() {
             }
         })
 
-        adapter = PatientAdapter()
-        adapter.notifyDataSetChanged()
+        adapter.setOnItemClickCallback(object : PatientAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: PatientData) {
+                val intentToDetail = Intent(this@ArchiveActivity, DetailPatientActivity::class.java)
+                intentToDetail.putExtra(DetailPatientActivity.EXTRA_NAME, data)
+                startActivity(intentToDetail)
+            }
+        })
     }
 
     private fun setupViewModel() {
@@ -99,6 +81,8 @@ class ArchiveActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val loginSession = LoginSession(this)
+
         menuInflater.inflate(R.menu.option_menu, menu)
 
         val searchManager = getSystemService(SEARCH_SERVICE) as SearchManager
@@ -110,7 +94,7 @@ class ArchiveActivity : AppCompatActivity() {
             override fun onQueryTextSubmit(patientid: String): Boolean {
                 showLoading(true)
                 searchView.clearFocus()
-                viewModel.setSearchPatient(patientid)
+                viewModel.setSearchPatient("Bearer ${loginSession.passToken().toString()}",patientid)
                 return true
             }
 
@@ -121,7 +105,48 @@ class ArchiveActivity : AppCompatActivity() {
                     }
                     return@setOnKeyListener false
                 }
+                if (newText.isNotEmpty()) {
+                    val layoutManager = LinearLayoutManager(this@ArchiveActivity)
+                    binding.rvListArchivePatient.layoutManager = layoutManager
+                    binding.rvListArchivePatient.addItemDecoration(
+                        DividerItemDecoration(
+                            this@ArchiveActivity,
+                            layoutManager.orientation
+                        )
+                    )
+                    binding.rvListArchivePatient.setHasFixedSize(true)
+                    binding.rvListArchivePatient.adapter = adapter
+
+                    viewModel.searchPatient.observe(this@ArchiveActivity) {
+                        if (it != null) {
+                            adapter.setListPatient(it)
+                            showLoading(false)
+                        }
+                        if (it.isEmpty()) {
+                            binding.notFoundAnimation.visibility = View.VISIBLE
+                        }
+                    }
+                }
+                if (newText.isEmpty()) {
+                    val layoutManagerPaging = LinearLayoutManager(this@ArchiveActivity)
+                    binding.rvListArchivePatient.layoutManager = layoutManagerPaging
+                    binding.rvListArchivePatient.addItemDecoration(
+                        DividerItemDecoration(
+                            this@ArchiveActivity,
+                            layoutManagerPaging.orientation
+                        )
+                    )
+                    binding.rvListArchivePatient.setHasFixedSize(true)
+                    binding.rvListArchivePatient.adapter = adapterPaging
+
+                    showLoading(true)
+                    pagingViewModel.allPatient.observe(this@ArchiveActivity) {
+                        adapterPaging.submitData(lifecycle, it)
+                        showLoading(false)
+                    }
+                }
                 return false
+
             }
         })
 
