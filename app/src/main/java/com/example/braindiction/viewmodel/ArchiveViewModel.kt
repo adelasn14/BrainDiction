@@ -22,6 +22,7 @@ class ArchiveViewModel : ViewModel() {
     val searchPatient: LiveData<ArrayList<PatientData>> = _searchPatient
 
     private val _listHistoryPrediction = MutableLiveData<ArrayList<User>>()
+    val listHistoryPrediction: LiveData<ArrayList<User>> = _listHistoryPrediction
 
     fun setSearchPatient(patientid: String) {
         val client = ApiConfig().getApiService().searchPatient(patientid)

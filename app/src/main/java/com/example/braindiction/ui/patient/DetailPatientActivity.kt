@@ -50,17 +50,17 @@ class DetailPatientActivity : AppCompatActivity() {
         }
 
         binding.apply {
-            fabPredict.setOnClickListener { fabAction() }
+            fabPredict.setOnClickListener {
+                binding.apply {
+                    val toPrediction = Intent(this@DetailPatientActivity, PredictionActivity::class.java)
+                    toPrediction.putExtra(PredictionActivity.EXTRA_ID, detail?.patientid)
+                    startActivity(toPrediction)
+                }
+            }
         }
     }
 
-    private fun fabAction(){
-        binding.apply {
-            val toPrediction = Intent(this@DetailPatientActivity, PredictionActivity::class.java)
-            toPrediction.putExtra(PredictionActivity.EXTRA_ID, patientid)
-            startActivity(toPrediction)
-            }
-        }
+
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

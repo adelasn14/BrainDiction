@@ -59,7 +59,7 @@ class PredictionActivity : AppCompatActivity() {
 
         binding.apply {
             fabScan.setOnClickListener{startTakePhoto()}
-            fabGallery.setOnClickListener{startGallery()}
+            fabGallery.setOnClickListener{startGallery() }
             predictButton.setOnClickListener { uploadXray() }
         }
     }
@@ -124,7 +124,13 @@ class PredictionActivity : AppCompatActivity() {
 
             val result = BitmapFactory.decodeFile(getFile?.path)
 
-            binding.previewImageView.setImageBitmap(result)
+            binding.apply {
+                previewImageView.setImageBitmap(result)
+
+                predictTv.visibility = View.VISIBLE
+                predictResultTv.visibility = View.VISIBLE
+                predictButton.visibility = View.VISIBLE
+            }
         }
     }
 
@@ -138,7 +144,13 @@ class PredictionActivity : AppCompatActivity() {
 
             getFile = myFile
 
-            binding.previewImageView.setImageURI(selectedImg)
+            binding.apply {
+                previewImageView.setImageURI(selectedImg)
+
+                predictTv.visibility = View.VISIBLE
+                predictResultTv.visibility = View.VISIBLE
+                predictButton.visibility = View.VISIBLE
+            }
         }
     }
 
@@ -147,12 +159,6 @@ class PredictionActivity : AppCompatActivity() {
         val predictResult: LiveData<UploadResponse> = _predictResult
 
         if (getFile != null) {
-            binding.apply {
-                predictTv.visibility = View.VISIBLE
-                predictResultTv.visibility = View.VISIBLE
-                predictButton.visibility = View.VISIBLE
-            }
-
             val patientid = intent.getIntExtra(EXTRA_ID, 0)
 
             val file = reduceFileImage(getFile as File)

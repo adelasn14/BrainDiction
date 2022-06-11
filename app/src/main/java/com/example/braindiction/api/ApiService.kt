@@ -10,9 +10,9 @@ import kotlin.collections.ArrayList
 
 interface ApiService {
     @Multipart
-    @POST("predict/{patientid}")
+    @POST("predict")
     fun uploadXray(
-        @Path("patientid") patientid: Int,
+        @Query("patientid") patientid: Int,
         @Header("Authorization") token: String,
         @Part file: MultipartBody.Part
     ) : Call<UploadResponse>
