@@ -118,6 +118,7 @@ class ArchiveActivity : AppCompatActivity() {
                     binding.rvListArchivePatient.adapter = adapter
 
                     viewModel.searchPatient.observe(this@ArchiveActivity) {
+                        showLoading(true)
                         if (it != null) {
                             adapter.setListPatient(it)
                             showLoading(false)

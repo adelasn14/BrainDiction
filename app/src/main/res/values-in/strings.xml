@@ -61,17 +61,23 @@
     </string-array>
 
     //welcome
-    <string name="getquick">Dapatkan Akurasi Prediksi Di sini</string>
+    <string name="getquick">Prediksi persentase tumor otak dengan cepat!</string>
     <string name="show_on">Panduan</string>
     <string name="information_text">Informasi tentang aplikasi</string>
     <string name="or_text">atau</string>
     <string name="login_text">masuk</string>
-    <string name="information">Kanker adalah salah satu penyebab utama kematian di dunia. Dengan deteksi dini, pasien kanker dapat hidup lebih lama dari yang tidak terduga.
-        Kami ingin membuat aplikasi untuk membantu ahli onkologi dalam mendeteksi kanker dengan bantuan Machine Learning. Alur dari aplikasi adalah ahli onkologi yang mengunggah informasi pasien (sinar-X) ke aplikasi dan aplikasi memberikan tingkat persentase dan prediksi keluaran.</string>
+    <string name="information">Tumor adalah salah satu penyebab utama kematian di dunia. Dengan pendeteksi dini, pasien dengan tumor dapat hidup lebih lama daripada yang tidak terdetesi.
+    Dengan aplikasi kami, kita bisa mendapatkan persentase prediksi hingga 93,5%. Mari selamatkan oran-orang!</string>
     <string name="guide" tools:ignore="ExtraTranslation">Cara Penggunaaan Aplikasi </string>
     <string name="Empty">-</string>
     <string name="history">Riwayat</string>
 
-    <string name="guide2">Selamat!, anda telah menyelesaikan buku panduan, beralih ke halaman login</string>
+    <string name="guide2">Selamat! anda telah menyelesaikan buku panduan, beralih ke halaman login</string>
+    <string name="change_profile_photo">Ganti foto profil</string>
+    <string name="predict_done_message">Prediksi anda sudah selesai.</string>
+    <string name="predict_pb">Lihat prediksi</string>
+    <string name="title_profile_action">Apa yang ingin Anda lakukan?</string>
+    <string name="profile_pb">Lihat foto profil</string>
+    <string name="profile_pb2">Perbarui foto profil</string>
 
 </resources>

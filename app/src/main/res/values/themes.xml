@@ -2,17 +2,23 @@
     <!-- Base application theme. -->
     <style name="Theme.BrainDiction" parent="Theme.MaterialComponents.Light">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/palette_lighter_gray</item>
-        <item name="colorPrimaryVariant">@color/palette_lighter_gray</item>
+        <item name="colorPrimary">@color/palette_lighter_purple</item>
         <item name="colorOnPrimary">@color/palette_black</item>
+        <item name="colorPrimaryDark">@color/palette_lighter_purple</item>
+
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/palette_darker_purple</item>
-        <item name="colorSecondaryVariant">@color/palette_black</item>
         <item name="colorOnSecondary">@color/palette_white</item>
+
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" >?attr/colorPrimaryDark</item>
         <!-- Customize your theme here. -->
-        <item name="android:textColor">?attr/colorSecondaryVariant</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+
+        <!-- Button State -->
+        <item name="colorButtonNormal">?attr/colorPrimary</item>
+        <item name="colorControlActivated">?attr/colorPrimaryDark</item>
+        <item name="alertDialogButtonGroupStyle">?attr/colorSecondary</item>
 
         <!-- specify enter and exit transitions -->
         <item name="android:windowActivityTransitions">true</item>

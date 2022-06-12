@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MyAlertDialogStyle" parent="android:Theme.Material.Dialog.Alert">
+        <!-- Used for the buttons -->
+        <item name="colorAccent">?attr/colorPrimaryDark</item>
+        <!-- Used for the title and text -->
+        <item name="android:textColorPrimary">?attr/colorOnPrimary</item>
+
+        <!-- Used for the background -->
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:colorPrimary">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+        <item name="android:windowEnterAnimation">@anim/nav_default_enter_anim</item>
+    </style>
+</resources>

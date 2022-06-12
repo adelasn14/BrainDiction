@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.FileProvider
+import androidx.core.widget.addTextChangedListener
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.braindiction.R
@@ -94,8 +95,16 @@ class ProfileActivity : AppCompatActivity() {
                         showLoading(false)
                         Toast.makeText(this@ProfileActivity, "Something's error happened!", Toast.LENGTH_SHORT).show()
                     }
-
                 })
+
+            val currentUser = FirebaseAuth.getInstance().currentUser
+            if (currentUser != null){
+                Glide.with(this@ProfileActivity)
+                    .load(currentUser.photoUrl)
+                    .circleCrop()
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .into(imgProfileAvatar)
+            }
         }
     }
 
@@ -135,15 +144,15 @@ class ProfileActivity : AppCompatActivity() {
 
     fun actionPP(view: View) {
         AlertDialog.Builder(this).apply {
-            setMessage("What do you want to do?")
-            setPositiveButton("See profile picture") { _, _ ->
+            setMessage(getString(R.string.title_profile_action))
+            setPositiveButton(getString(R.string.profile_pb)) { _, _ ->
                 val intent = Intent(context, launcherIntentCamera::class.java)
                 intent.flags =
                     Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
                 finish()
             }
-            setNegativeButton("Update profile picture") { _, _ ->
+            setNegativeButton(getString(R.string.profile_pb2)) { _, _ ->
                 startTakePhoto()
             }
             create()
@@ -216,6 +225,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun getDPUploaded(uri: Uri) {
+        showLoading(true)
         val currentUser = FirebaseAuth.getInstance().currentUser
 
         val req = UserProfileChangeRequest.Builder()
@@ -223,11 +233,12 @@ class ProfileActivity : AppCompatActivity() {
 
         val uploadTask = currentUser?.updateProfile(req)
         uploadTask?.addOnSuccessListener {
-            Toast.makeText(this, "Successfully updated", Toast.LENGTH_SHORT).show()
+            showLoading(false)
+            Toast.makeText(this, "Profile photo is successfully updated!", Toast.LENGTH_SHORT).show()
         }?.addOnFailureListener {
-            Toast.makeText(this, "Display picture failed...", Toast.LENGTH_SHORT).show()
+            showLoading(false)
+            Toast.makeText(this, "Profile photo failed.", Toast.LENGTH_SHORT).show()
             }
-
 
         }
 

@@ -37,7 +37,7 @@ class PatientListPagingAdapter :
         fun bind(data: PatientData) {
             binding.apply {
                 tvPatient.text = data.name
-                tvNorm.text = data.patientid.toString()
+                tvNorm.text = StringBuilder().append("ID : ").append(data.patientid.toString())
 
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailPatientActivity::class.java)

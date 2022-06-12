@@ -18,22 +18,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_place_holder"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription,ImageContrastCheck" />
 
     <TextView
         android:id="@+id/predict_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/altone_bold"
         android:text="@string/prediction"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:visibility="gone"
-        tools:visibility="visible"
         app:layout_constraintEnd_toEndOf="@+id/previewImageView"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/previewImageView"
-        app:layout_constraintTop_toBottomOf="@+id/previewImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/previewImageView"
+        tools:visibility="visible" />
 
     <TextView
         android:id="@+id/predictResult_tv"
@@ -47,13 +47,13 @@
         android:paddingHorizontal="5dp"
         android:paddingVertical="5dp"
         android:text="@string/prediction_result"
-        android:textSize="12sp"
+        android:textSize="14sp"
         android:visibility="gone"
-        tools:visibility="visible"
         app:layout_constraintEnd_toEndOf="@+id/previewImageView"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/previewImageView"
-        app:layout_constraintTop_toBottomOf="@+id/predict_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/predict_tv"
+        tools:visibility="visible" />
 
     <Button
         android:id="@+id/predictButton"
@@ -63,7 +63,7 @@
         android:backgroundTint="@color/palette_darker_purple"
         android:fontFamily="@font/altone_bold"
         android:text="@string/predict"
-        android:textSize="13sp"
+        android:textSize="16sp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/predictResult_tv"
         app:layout_constraintStart_toStartOf="@+id/predictResult_tv"
@@ -93,7 +93,7 @@
         app:fabCustomSize="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/fab_action"
-        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck" />
 
     <TextView
         android:id="@+id/add_scan_button"
@@ -119,7 +119,7 @@
         app:fabCustomSize="60dp"
         app:layout_constraintBottom_toTopOf="@+id/fab_scan"
         app:layout_constraintEnd_toEndOf="@+id/fab_action"
-        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck" />
 
     <TextView
         android:id="@+id/add_import_image"

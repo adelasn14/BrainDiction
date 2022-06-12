@@ -19,6 +19,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.braindiction.R
 import com.example.braindiction.api.ApiConfig
 import com.example.braindiction.api.UploadResponse
 import com.example.braindiction.databinding.ActivityPredictionBinding
@@ -180,6 +181,7 @@ class PredictionActivity : AppCompatActivity() {
                     response: Response<UploadResponse>
                 ) {
                     if (response.isSuccessful) {
+                        binding.fabAction.shrink()
                         val responseBody = response.body()
                         if (responseBody != null) {
                             Log.d("PredictionActivity", responseBody.toString())
@@ -194,8 +196,8 @@ class PredictionActivity : AppCompatActivity() {
                                     }
                                 }
                                 setTitle("Yeah!")
-                                setMessage("Prediksi anda sudah selesai.")
-                                setPositiveButton("Lihat prediksi") { _, _ ->
+                                setMessage(getString(R.string.predict_done_message))
+                                setPositiveButton(getString(R.string.predict_pb)) { _, _ ->
                                     val intent = Intent(context, PredictionActivity::class.java)
                                     intent.flags =
                                         Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK

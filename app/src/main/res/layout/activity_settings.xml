@@ -6,21 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.settings.SettingsActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="280dp"
-        android:text="@string/title_settings"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ToggleButton
         android:id="@+id/toggle_theme_layout"
         android:layout_width="350dp"
         android:layout_height="56dp"
-        android:fontFamily="@font/altone_regular"
+        android:fontFamily="@font/altone_bold"
         android:textOff="@string/dark_mode_off"
         android:textOn="@string/dark_mode_on"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:backgroundTint="@color/palette_lighter_gray"
-        android:fontFamily="@font/altone_regular"
+        android:fontFamily="@font/altone_bold"
         android:text="@string/logout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,8 +53,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:backgroundTint="@color/palette_lighter_gray"
+        android:fontFamily="@font/altone_bold"
         android:text="@string/language"
-        android:fontFamily="@font/altone_regular"
         app:layout_constraintEnd_toEndOf="@+id/toggle_theme_layout"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/toggle_theme_layout"

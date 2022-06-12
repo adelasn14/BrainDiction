@@ -42,55 +42,67 @@
                 android:layout_width="match_parent"
                 android:layout_height="600dp"
                 android:src="@drawable/guidepic1"
-                android:paddingBottom="20dp"/>
+                android:paddingBottom="20dp"
+                tools:ignore="ContentDescription" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="600dp"
+                android:paddingBottom="20dp"
                 android:src="@drawable/guidepic12"
-                android:paddingBottom="20dp"/>
+                tools:ignore="ContentDescription" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="600dp"
                 android:src="@drawable/guidepic13"
-                android:paddingBottom="20dp"/>
+                android:paddingBottom="20dp"
+                tools:ignore="ContentDescription" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="600dp"
                 android:src="@drawable/guidepic14"
-                android:paddingBottom="20dp"/>
+                android:paddingBottom="20dp"
+                tools:ignore="ContentDescription" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="600dp"
                 android:src="@drawable/guidepic15"
-                android:paddingBottom="20dp"/>
+                android:paddingBottom="20dp"
+                tools:ignore="ContentDescription" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="600dp"
                 android:src="@drawable/guidepic16"
-                android:paddingBottom="20dp"/>
+                android:paddingBottom="20dp"
+                tools:ignore="ContentDescription" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/textView"
+                android:layout_width="340dp"
                 android:layout_height="wrap_content"
-                android:text="@string/guide2"
-                android:gravity="center"
-                android:textColor="?android:attr/textColorPrimary"
-                android:textSize="15sp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="35dp"
                 android:fontFamily="@font/altone_regular"
-                android:paddingBottom="20dp"/>
+                android:gravity="center"
+                android:paddingBottom="20dp"
+                android:text="@string/guide2"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="15sp" />
 
             <Button
                 android:id="@+id/loginButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/login_text"/>
+                android:layout_marginBottom="50dp"
+                android:backgroundTint="@color/mouse_hover_effect"
+                android:text="@string/login_text" />
 
         </LinearLayout>
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

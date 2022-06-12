@@ -63,14 +63,20 @@
     <string name="information_text">Information about the app</string>
     <string name="or_text">or</string>
     <string name="login_text">login</string>
-    <string name="information">Cancer is a leading cause of death worldwide, with an early detection cancer patient can live longer than the unpredicted one. We want to make an application to help oncologists in detecting cancer with the help of machine learning. The app flow is around the oncologist uploading patient’s information (X-rays) to the app and the app is giving out percentage rate and the output prediction.</string>
+    <string name="information">Tumor is a leading cause of death worldwide, with an early detection patients that have tumor can live longer than the unpredicted ones. With our app, get brain tumor prediction up to 93,5% accuracy. Let\'s save people!</string>
     <string name="welcompage" translatable="false">Welcome To Brain Tumor Detection</string>
-    <string name="getquick">Get Quick your Accuration</string>
+    <string name="getquick">Predict brain tumor percentage quick!</string>
     <string name="guide" tools:ignore="ExtraTranslation">We Will Guide You With This Illustration</string>
     <string name="date_of_birth">Date of Birth</string>
     <string name="Empty">-</string>
     <string name="history">History</string>
 <!-- TODO: Remove or change this placeholder text -->
-    <string name="guide2">Yeay! you\'re finished the guide, let\'s connect</string>
+    <string name="guide2">Yeay! you\'ve finished the guide, let\'s continue to login</string>
+    <string name="change_profile_photo">Change profile photo</string>
+    <string name="predict_done_message">Your prediction is succeed.</string>
+    <string name="predict_pb">Check the prediction</string>
+    <string name="title_profile_action">What do you want to do?</string>
+    <string name="profile_pb">See profile picture</string>
+    <string name="profile_pb2">Update profile picture</string>
 
 </resources>

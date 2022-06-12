@@ -20,8 +20,8 @@
         android:id="@+id/welcome_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/altone_bold"
         android:text="@string/welcompage"
         android:textColor="?android:attr/textColorPrimary"
@@ -31,16 +31,16 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="31dp"
+        android:layout_width="343dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="15dp"
         android:fontFamily="@font/altone_regular"
         android:text="@string/information"
         android:textColor="?android:attr/textColorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/getQuick_text"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/getQuick_text"
         app:layout_constraintTop_toBottomOf="@+id/getQuick_text" />
 
     <Button
@@ -48,12 +48,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/altone_bold"
         android:text="@string/show_on"
+        android:backgroundTint="@color/mouse_hover_effect"
         android:textColor="?android:attr/textColorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toEndOf="@+id/information_txt"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -61,12 +62,11 @@
         android:id="@+id/information_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/altone_regular"
         android:text="@string/information_text"
         android:textColor="?android:attr/textColorPrimary"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
@@ -81,9 +81,10 @@
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="121dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="40dp"
+        android:backgroundTint="@color/mouse_hover_effect"
         android:fontFamily="@font/altone_bold"
         android:text="@string/login_text"
         app:layout_constraintEnd_toEndOf="@+id/button_gyuide"
@@ -94,13 +95,14 @@
         android:id="@+id/getQuick_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
         android:layout_marginTop="55dp"
         android:layout_marginBottom="29dp"
-        android:text="@string/getquick"
         android:fontFamily="@font/altone_regular"
+        android:text="@string/getquick"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/welcome_txt"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/welcome_txt"
         app:layout_constraintTop_toBottomOf="@+id/welcome_txt" />
 
 
