@@ -41,7 +41,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="600dp"
-                android:src="@drawable/guidepic1"
+                android:src="@drawable/guide111"
                 android:paddingBottom="20dp"
                 tools:ignore="ContentDescription" />
 

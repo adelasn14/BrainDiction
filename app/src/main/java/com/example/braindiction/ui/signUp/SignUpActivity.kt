@@ -29,7 +29,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "userRegister")
-class SignUpActivity : AppCompatActivity() {
+class SignUpActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     private lateinit var binding: ActivitySignUpBinding
 
@@ -81,14 +81,21 @@ class SignUpActivity : AppCompatActivity() {
             setMyButtonEnable()
         }
 
-        val ddOccupation = binding.spinnerOccupation
-        val occupation = resources.getStringArray(R.array.occupation)
-
-        val adapter = ArrayAdapter(
+        val spinner: Spinner = binding.spinnerOccupation
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter.createFromResource(
             this,
-            android.R.layout.simple_spinner_item, occupation
-        )
-        ddOccupation.adapter = adapter
+            R.array.occupation,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            spinner.adapter = adapter
+        }
+
+
+
 
         val birthEd = binding.textDateBirth
         val myCalendar = Calendar.getInstance()
@@ -180,5 +187,13 @@ class SignUpActivity : AppCompatActivity() {
 
     companion object {
         private const val TAG = "SignUpActivity"
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+        binding.spinnerOccupation.onItemSelectedListener.toString()
+        parent?.getItemAtPosition(pos)
+    }
+
+    override fun onNothingSelected(p0: AdapterView<*>?) {
     }
 }

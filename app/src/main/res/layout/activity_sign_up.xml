@@ -320,6 +320,7 @@
                 android:layout_marginTop="2dp"
                 android:minHeight="48dp"
                 android:spinnerMode="dropdown"
+                android:entries="@array/occupation"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/occupation"
