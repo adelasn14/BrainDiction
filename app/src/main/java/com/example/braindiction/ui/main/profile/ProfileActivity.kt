@@ -23,6 +23,7 @@ import com.example.braindiction.databinding.ActivityProfileBinding
 import com.example.braindiction.ui.main.home.HomeActivity
 import com.example.braindiction.ui.main.notification.NotificationActivity
 import com.example.braindiction.ui.main.settings.SettingsActivity
+import com.example.braindiction.ui.uriToFile
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.database.DataSnapshot
@@ -155,6 +156,9 @@ class ProfileActivity : AppCompatActivity() {
             setNegativeButton(getString(R.string.profile_pb2)) { _, _ ->
                 startTakePhoto()
             }
+            setNegativeButton(getString(R.string.probile_pb3)) { _, _ ->
+                startTakePhoto()
+            }
             create()
             show()
         }
@@ -195,6 +199,30 @@ class ProfileActivity : AppCompatActivity() {
             uploadToFirebase(result)
         }
     }
+
+    private val launcherIntentGallery = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val selectedImg: Uri = result.data?.data as Uri
+
+            val myFile = uriToFile(selectedImg, this)
+
+            getFile = myFile
+
+            val imageUri: Uri = selectedImg
+            val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(applicationContext.contentResolver, Uri.parse(
+                imageUri.toString()
+            ))
+            Glide.with(this)
+                .load(result)
+                .circleCrop()
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .into(binding.imgProfileAvatar)
+
+            uploadToFirebase(bitmap)
+            }
+        }
 
     private fun uploadToFirebase(bitmap: Bitmap) {
         val profilePicture = storage.reference.child("userProfilImage")

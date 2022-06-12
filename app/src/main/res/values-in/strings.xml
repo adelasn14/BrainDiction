@@ -78,6 +78,7 @@
     <string name="predict_pb">Lihat prediksi</string>
     <string name="title_profile_action">Apa yang ingin Anda lakukan?</string>
     <string name="profile_pb">Lihat foto profil</string>
-    <string name="profile_pb2">Perbarui foto profil</string>
+    <string name="profile_pb2">Ambil foto</string>
+    <string name="probile_pb3">Pilih dari galeri</string>
 
 </resources>

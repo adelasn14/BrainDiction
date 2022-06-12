@@ -77,6 +77,7 @@
     <string name="predict_pb">Check the prediction</string>
     <string name="title_profile_action">What do you want to do?</string>
     <string name="profile_pb">See profile picture</string>
-    <string name="profile_pb2">Update profile picture</string>
+    <string name="profile_pb2">Take photo</string>
+    <string name="probile_pb3">Choose from library</string>
 
 </resources>

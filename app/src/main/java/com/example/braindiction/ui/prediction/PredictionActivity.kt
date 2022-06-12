@@ -164,7 +164,7 @@ class PredictionActivity : AppCompatActivity() {
 
             val file = reduceFileImage(getFile as File)
 
-            val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
+            val requestImageFile = file.asRequestBody("image/jpg".toMediaTypeOrNull())
             val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
                 "photo",
                 file.name,
@@ -172,40 +172,27 @@ class PredictionActivity : AppCompatActivity() {
             )
 
             val loginSession = LoginSession(this)
-            val service = ApiConfig().getApiService().uploadXray(
-                patientid, "Bearer ${loginSession.passToken().toString()}", imageMultipart
+            val service = ApiConfig().getApiServiceML().uploadXray(
+                imageMultipart
             )
             service.enqueue(object : Callback<UploadResponse> {
                 override fun onResponse(
                     call: Call<UploadResponse>,
                     response: Response<UploadResponse>
                 ) {
-                    if (response.isSuccessful) {
+                    if (response.isSuccessful && response.message() != "Error, no file") {
                         binding.fabAction.shrink()
                         val responseBody = response.body()
                         if (responseBody != null) {
                             Log.d("PredictionActivity", responseBody.toString())
-                            AlertDialog.Builder(this@PredictionActivity).apply {
-                                predictResult.observe(this@PredictionActivity) {
-                                    if (it != null) {
-                                        showLoading(false)
-                                        binding.apply {
-                                            predictResultTv.text = StringBuilder().append(it.persentage.toString()).append("%")
-                                            predictResultTv.text = StringBuilder().append("Prediction : ").append(it.prediction)
-                                        }
+                            predictResult.observe(this@PredictionActivity) {
+                                if (it != null) {
+                                    showLoading(false)
+                                    binding.apply {
+                                        predictResultTv.text = StringBuilder().append(it.persentage.toString()).append("%")
+                                        predictResultTv.text = StringBuilder().append("Prediction : ").append(it.prediction)
                                     }
                                 }
-                                setTitle("Yeah!")
-                                setMessage(getString(R.string.predict_done_message))
-                                setPositiveButton(getString(R.string.predict_pb)) { _, _ ->
-                                    val intent = Intent(context, PredictionActivity::class.java)
-                                    intent.flags =
-                                        Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                                    startActivity(intent)
-                                    finish()
-                                }
-                                create()
-                                show()
                             }
                         }
                     } else {
