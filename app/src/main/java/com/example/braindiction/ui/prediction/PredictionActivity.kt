@@ -12,18 +12,15 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.braindiction.R
 import com.example.braindiction.api.ApiConfig
 import com.example.braindiction.api.UploadResponse
 import com.example.braindiction.databinding.ActivityPredictionBinding
-import com.example.braindiction.preference.LoginSession
 import com.example.braindiction.ui.patient.DetailPatientActivity
 import com.example.braindiction.ui.reduceFileImage
 import com.example.braindiction.ui.uriToFile
@@ -148,8 +145,6 @@ class PredictionActivity : AppCompatActivity() {
             binding.apply {
                 previewImageView.setImageURI(selectedImg)
 
-                predictTv.visibility = View.VISIBLE
-                predictResultTv.visibility = View.VISIBLE
                 predictButton.visibility = View.VISIBLE
             }
         }
@@ -160,18 +155,16 @@ class PredictionActivity : AppCompatActivity() {
         val predictResult: LiveData<UploadResponse> = _predictResult
 
         if (getFile != null) {
-            val patientid = intent.getIntExtra(EXTRA_ID, 0)
 
             val file = reduceFileImage(getFile as File)
 
-            val requestImageFile = file.asRequestBody("image/jpg".toMediaTypeOrNull())
+            val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
             val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
-                "photo",
+                "file",
                 file.name,
-                requestImageFile
-            )
+                requestImageFile)
 
-            val loginSession = LoginSession(this)
+
             val service = ApiConfig().getApiServiceML().uploadXray(
                 imageMultipart
             )
@@ -180,19 +173,15 @@ class PredictionActivity : AppCompatActivity() {
                     call: Call<UploadResponse>,
                     response: Response<UploadResponse>
                 ) {
-                    if (response.isSuccessful && response.message() != "Error, no file") {
+                    showLoading(true)
+                    if (response.isSuccessful) {
                         binding.fabAction.shrink()
                         val responseBody = response.body()
                         if (responseBody != null) {
                             Log.d("PredictionActivity", responseBody.toString())
-                            predictResult.observe(this@PredictionActivity) {
-                                if (it != null) {
-                                    showLoading(false)
-                                    binding.apply {
-                                        predictResultTv.text = StringBuilder().append(it.persentage.toString()).append("%")
-                                        predictResultTv.text = StringBuilder().append("Prediction : ").append(it.prediction)
-                                    }
-                                }
+                            showLoading(false)
+                            binding.apply {
+                                predictResultTv.text = StringBuilder().append("Percentage : ").append(responseBody.percentage.toString()).append("%").append("\n").append("Prediction : ").append(responseBody.prediction)
                             }
                         }
                     } else {
@@ -219,6 +208,11 @@ class PredictionActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show()
         }
+
+        binding.predictTv.visibility = View.VISIBLE
+        showLoading(true)
+        binding.predictResultTv.visibility = View.VISIBLE
+        showLoading(false)
     }
 
     private fun fabAddAction(){

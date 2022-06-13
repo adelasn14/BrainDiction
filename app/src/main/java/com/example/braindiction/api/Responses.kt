@@ -8,7 +8,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 data class UploadResponse(
-    val persentage: Float,
+    val percentage: Float,
     val prediction: String
 )
 

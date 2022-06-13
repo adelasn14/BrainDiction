@@ -19,6 +19,7 @@ import com.example.braindiction.api.ApiConfig
 import com.example.braindiction.databinding.ActivityNewPatientBinding
 import com.example.braindiction.preference.LoginSession
 import com.example.braindiction.ui.main.home.HomeActivity
+import com.example.braindiction.ui.prediction.PredictionActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -120,6 +121,21 @@ class NewPatientActivity : AppCompatActivity() {
                             if (responseBody != null) {
                                 _addNewPatient.postValue(response.body())
                                 Log.d("TAG", "response : $response")
+
+                                AlertDialog.Builder(this@NewPatientActivity).apply {
+                                    setTitle("Congratulations!")
+                                    setMessage("Patient data has successfully been submitted.")
+                                    setPositiveButton("Continue") { _, _ ->
+                                        val intent = Intent(this@NewPatientActivity, DetailPatientActivity::class.java)
+                                        intent.putExtra(DetailPatientActivity.EXTRA_NAME, responseBody.name)
+                                        intent.flags =
+                                            Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                        startActivity(intent)
+                                        finish()
+                                    }
+                                    create()
+                                    show()
+                                }
                             }
                         }
                     }
@@ -128,19 +144,6 @@ class NewPatientActivity : AppCompatActivity() {
                         Log.d(TAG, "onFailure: ${t.message.toString()}")
                     }
                 })
-                AlertDialog.Builder(this@NewPatientActivity).apply {
-                    setTitle("Congratulations!")
-                    setMessage("Patient data has successfully been submitted.")
-                    setPositiveButton("Continue") { _, _ ->
-                        val intent = Intent(context, DetailPatientActivity::class.java)
-                        intent.flags =
-                            Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                        startActivity(intent)
-                        finish()
-                    }
-                    create()
-                    show()
-                }
             }
         }
     }

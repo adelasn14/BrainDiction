@@ -21,9 +21,7 @@ interface ApiService {
         @Query("patientid") patientid: Int,
     ): Call<ArrayList<User>>
 
-    @Headers(
-        "Content-type:application/json; charset=utf-8"
-    )
+    @Headers("Content-type:application/json; charset=utf-8")
     @POST("registerpatient")
     fun patientRegister(
         @Header("Authorization") token: String,

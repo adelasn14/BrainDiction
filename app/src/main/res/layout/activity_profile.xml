@@ -65,20 +65,6 @@
         app:layout_constraintTop_toBottomOf="@+id/ev_username" />
 
     <TextView
-        android:id="@+id/ev_pekerjaan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/altone_regular"
-        android:text="@string/pekerjaan"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/ev_name"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/ev_name"
-        app:layout_constraintTop_toBottomOf="@+id/ev_name" />
-
-    <TextView
         android:id="@+id/ev_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -119,10 +105,10 @@
         android:text="@string/date_of_birth"
         android:textColor="?android:attr/textColorPrimary"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/ev_pekerjaan"
+        app:layout_constraintEnd_toEndOf="@+id/ev_name"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/ev_pekerjaan"
-        app:layout_constraintTop_toBottomOf="@+id/ev_pekerjaan" />
+        app:layout_constraintStart_toStartOf="@+id/ev_name"
+        app:layout_constraintTop_toBottomOf="@+id/ev_name" />
 
     <ProgressBar
         android:id="@+id/progressBar"

@@ -81,7 +81,6 @@ class ProfileActivity : AppCompatActivity() {
 
                         evUsername.text = StringBuilder().append("＠").append(userProfile.username)
                         evName.text = userProfile.name
-                        evPekerjaan.text = userProfile.occupation
                         evAddress.text = userProfile.address
                         evEmail.text = userProfile.email
 
@@ -146,18 +145,11 @@ class ProfileActivity : AppCompatActivity() {
     fun actionPP(view: View) {
         AlertDialog.Builder(this).apply {
             setMessage(getString(R.string.title_profile_action))
-            setPositiveButton(getString(R.string.profile_pb)) { _, _ ->
-                val intent = Intent(context, launcherIntentCamera::class.java)
-                intent.flags =
-                    Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                startActivity(intent)
-                finish()
-            }
-            setNegativeButton(getString(R.string.profile_pb2)) { _, _ ->
+            setPositiveButton(getString(R.string.profile_pb2)) { _, _ ->
                 startTakePhoto()
             }
             setNegativeButton(getString(R.string.probile_pb3)) { _, _ ->
-                startTakePhoto()
+                startGallery()
             }
             create()
             show()
@@ -198,6 +190,14 @@ class ProfileActivity : AppCompatActivity() {
 
             uploadToFirebase(result)
         }
+    }
+
+    private fun startGallery() {
+        val intent = Intent()
+        intent.action = Intent.ACTION_GET_CONTENT
+        intent.type = "image/*"
+        val chooser = Intent.createChooser(intent, "Choose a Picture")
+        launcherIntentGallery.launch(chooser)
     }
 
     private val launcherIntentGallery = registerForActivityResult(
