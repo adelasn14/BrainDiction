@@ -13,3 +13,6 @@ Adela Salma Nadhifa - A2007F0741
 Charesta Vida Reswara - A2007F0742
 
 User flow aplikasi : https://app.diagrams.net/?src=about#G1XHclAAURgVH-xruK5NRvbXRwlJDW3iWw
+
+More details about the scorecard: https://madscorecard.withgoogle.com/scorecard/share/1695234758/
+![summary](https://user-images.githubusercontent.com/80314714/176713885-2ef170b1-0ade-4992-b6ca-0c2ab4db28dc.png)
