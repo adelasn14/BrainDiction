@@ -1,4 +1,4 @@
-#BrainDiction
+# BrainDiction
 
 This is the Capstone Project application for the Bangkit Academy 2022 program.
 
