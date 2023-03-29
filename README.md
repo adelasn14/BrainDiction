@@ -1,6 +1,6 @@
 #BrainDiction
 
-This is the Capstone Project application for the Rise 2022 program.
+This is the Capstone Project application for the Bangkit Academy 2022 program.
 
 Themed Human Healthcare & Animal Welfare, this Android-based application uses a collection of activities and intents to navigate between pages. User authorization uses Firebase Auth and Cloud Storage.
 
